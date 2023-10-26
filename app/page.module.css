@@ -212,7 +212,7 @@ CSS
   }
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   .vercelLogo {
     filter: invert(1);
   }
