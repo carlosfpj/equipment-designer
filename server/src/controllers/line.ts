@@ -2,7 +2,7 @@ import { RequestHandler } from "express";
 import linecalc from '../calc/line';
 import lineSize from "../models/lineSize";
 
-export const getline: RequestHandler = async (req , res, next) => {
+export const getlines: RequestHandler = async (req , res, next) => {
   try {
     //const line = await lineSize.find().exec();
     const lineDiameter = await linecalc(2, 2);
@@ -11,6 +11,16 @@ export const getline: RequestHandler = async (req , res, next) => {
     next(error);
   }
 };
+
+export const getline: RequestHandler = async (req, res, next) => {
+  const lineId = req.params.lineId;
+    try {
+      const line = await lineSize.findById(lineId).exec();
+      res.status(200).json(line);
+    } catch (error) {
+      next(error);
+    }
+}
 
 export const createline: RequestHandler = async (req, res, next) => {
   const titulo = req.body.title;
