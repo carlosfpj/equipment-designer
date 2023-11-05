@@ -1,22 +1,17 @@
 import "dotenv/config";
 import express, { NextFunction, Request, Response } from 'express';
-import lineSize from "./models/lineSize";
-import linecalc from "./calc/line";
-
+import router from "./routes/line";
 const app = express();
 
-app.get('/', async (req, res, next) => {
-  try {
-    const line = await lineSize.find().exec();
-    const lineDiameter =  await linecalc(2,2);
-    res.status(200).json(lineDiameter);
-  } catch (error) {
-    next(error);
-  }
-});
+app.use(express.json());
+app.use("/line", router );
 
-app.use((req, res, next) => {
-  next(Error('Endpoint not found'));
+app.use((req, res) => {
+  const error = {
+    title: Error,
+    content: "No se encuentra la url solicitada",
+  }
+  res.status(500).json(error);
 });
 
 app.use((error: unknown, req: Request, res: Response, next: NextFunction) => {
@@ -24,6 +19,7 @@ app.use((error: unknown, req: Request, res: Response, next: NextFunction) => {
   let errorMessage = "an unknown Error ocurred";
   if (error instanceof Error) {
     errorMessage = error.message;
+    console.error('el error entró en el if');
     res.status(500).json({ error: errorMessage });
   }
 });
