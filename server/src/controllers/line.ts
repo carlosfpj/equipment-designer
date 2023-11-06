@@ -52,10 +52,61 @@ export const createline: RequestHandler<unknown, unknown, CreateLine, unknown> =
   }
 };
 
-export const updateLine: RequestHandler<> = async(req, res, next) => {
+
+interface updateLineParams {
+  lineId: string,
+}
+interface updateLineBody {
+  title?: string,
+  flow?: number,
+}
+
+export const updateLine: RequestHandler<updateLineParams, unknown, updateLineBody, unknown> = async(req, res, next) => {
+  const lineId = req.params.lineId;
+  const newTitle = req.body.title;
+  const newFlow = req.body.flow;
+
   try {
+    if (!mongoose.isValidObjectId(lineId)) {
+      throw createHttpError(400, "Invalid lineId");
+    }
+    if (!newFlow || !newTitle) {
+      throw createHttpError(400, "Line edit must have flow and title");
+    }
+    const line = await lineSize.findById(lineId).exec();
+    if (!line) {
+      throw createHttpError(404, "Note not found");
+    }
+
+    line.title = newTitle || '';
+    line.flow = newFlow;
+
+    const updatedLine = await line.save();
+
+    res.status(200).json(updatedLine);
+  } catch (error) {
+    next(error);
+  }
+}
+
+export const deleteLine: RequestHandler = async(req,res,next) => {
+  const lineId = req.params.lineId;
+  try {
+    if (!mongoose.isValidObjectId(lineId)) {
+      throw createHttpError(400, "Invalid lineId");
+    }
+
+    const line = await lineSize.findById(lineId).exec();
+
+    if (!line) {
+      throw createHttpError(404, "Note not found");
+    }
+
+    await line.deleteOne();
+
+    res.sendStatus(204);
 
   } catch (error) {
-
+    next(error);
   }
 }
