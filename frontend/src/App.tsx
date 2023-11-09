@@ -1,24 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Button from 'react-bootstrap/Button';
+import { Line } from './models/line';
 
 function App() {
+
+  const [lines, setLines] = useState<Line[]>([]);
+
+  useEffect(() => {
+    async function loadNotes() {
+      try {
+        const response = await fetch("/line", { method: "GET" });
+        const lines = await response.json();
+        setLines(lines);
+      } catch (error) {
+        console.error(error);
+        alert(error);
+      }
+    }
+    loadNotes();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {JSON.stringify(lines)}
     </div>
   );
 }
