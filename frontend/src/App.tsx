@@ -1,12 +1,10 @@
 import React, { useState, useEffect} from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Button from 'react-bootstrap/Button';
-import { Line } from './models/line';
+import { Line as LineModel} from './models/line';
+import Line from './components/Line';
 
 function App() {
 
-  const [lines, setLines] = useState<Line[]>([]);
+  const [lines, setLines] = useState<LineModel[]>([]);
 
   useEffect(() => {
     async function loadNotes() {
@@ -23,8 +21,10 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      {JSON.stringify(lines)}
+    <div>
+      {lines.map(line => (
+        <Line line={line} key={line._id}></Line>
+      ))}
     </div>
   );
 }

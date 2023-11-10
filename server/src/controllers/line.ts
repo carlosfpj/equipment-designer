@@ -1,14 +1,14 @@
 import { RequestHandler } from "express";
-import linecalc from '../calc/line';
+// import linecalc from '../calc/line';
 import lineSize from "../models/lineSize";
 import createHttpError from "http-errors";
 import mongoose from "mongoose";
 
 export const getlines: RequestHandler = async (req , res, next) => {
   try {
-    //const line = await lineSize.find().exec();
-    const lineDiameter = await linecalc(2, 2);
-    res.status(200).json(lineDiameter);
+    const line = await lineSize.find().exec();
+    // const lineDiameter = await linecalc(2, 2);
+    res.status(200).json(line);
   } catch (error) {
     next(error);
   }
