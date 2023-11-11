@@ -1,6 +1,10 @@
 import React, { useState, useEffect} from 'react';
 import { Line as LineModel} from './models/line';
 import Line from './components/Line';
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import styles from './styles/LinePage.module.css';
 
 function App() {
 
@@ -21,11 +25,15 @@ function App() {
   }, []);
 
   return (
-    <div>
-      {lines.map(line => (
-        <Line line={line} key={line._id}></Line>
-      ))}
-    </div>
+    <Container>
+      <Row xs={1} md={2} xl={3} className='g-4'>
+          {lines.map(line => (
+            <Col key={line._id}>
+              <Line line={line} className={styles.line}></Line>
+            </Col>
+          ))}
+      </Row>
+    </Container>
   );
 }
 
