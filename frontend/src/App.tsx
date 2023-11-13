@@ -38,7 +38,10 @@ function App() {
           ))}
       </Row>
       {showAddLineDialog &&
-        <AddLineDialog onDismiss={() => setShowAddLineDialog(false)}></AddLineDialog>
+        <AddLineDialog
+          onDismiss={() => setShowAddLineDialog(false)}
+          onLineSaved={() => {}}
+          />
       }
     </Container>
   );
