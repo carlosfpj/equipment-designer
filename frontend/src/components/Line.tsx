@@ -27,7 +27,7 @@ const Line = ({line, className}: LineProps) => {
   return (
     <Card className={`${styles.lineCard} ${className}`}>
       <Card.Body className={styles.cardBody}>
-        <Card.Title>{line.title}</Card.Title>
+        <Card.Title>{title}</Card.Title>
         <Card.Text className={styles.cardText}>{flow}</Card.Text>
       </Card.Body>
       <Card.Footer className="text-muted">
