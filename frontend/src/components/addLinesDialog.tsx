@@ -55,7 +55,7 @@ const AddLineDialog = ({ onDismiss, onLineSaved }: AddLineDialogProps) => {
               type="number"
               as="textarea"
               rows={5}
-              placeholder="text"
+              placeholder="flow"
               {...register("flow")}
             />
           </Form.Group>
