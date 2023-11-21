@@ -3,7 +3,9 @@ import Container from 'react-bootstrap/Container'
 import { BrowserRouter, Route } from 'react-router-dom';
 import {Routes} from 'react-router-dom';
 import DashPage from './pages/Dashpage';
-import Linepage from './pages/Linepage';
+import DesignerPage from './pages/Designerpage';
+import Blogpage from './pages/Blogpage';
+import AboutMePage from './pages/AboutMePage';
 import NavigationBar from './components/Navbar/NavBar';
 
 function App() {
@@ -17,8 +19,16 @@ function App() {
             element={<DashPage/>}
           />
           <Route
-          path='/line'
-          element={<Linepage/>}
+          path='/blog'
+          element={<Blogpage/>}
+          />
+          <Route
+            path='/designer'
+            element={<DesignerPage />}
+          />
+          <Route
+            path='/aboutme'
+            element={<AboutMePage />}
           />
         </Routes>
       </Container>
