@@ -34,14 +34,14 @@ const NavigationBar = () => {
           </li>
           <li>
             <NavLink
-              to="/designer"
+              to="/blog"
               className="navlink"
               style={activeState}
             >blog</NavLink>
           </li>
           <li>
             <NavLink
-              to="/blog"
+              to="/designer"
               className="navlink"
               style={activeState}
             >designer</NavLink>

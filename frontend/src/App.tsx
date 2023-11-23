@@ -7,6 +7,7 @@ import DesignerPage from './pages/Designerpage';
 import Blogpage from './pages/Blogpage';
 import AboutMePage from './pages/AboutMePage';
 import NavigationBar from './components/Navbar/NavBar';
+import Linepage from './pages/Linepage';
 
 function App() {
   return (
@@ -24,8 +25,11 @@ function App() {
           />
           <Route
             path='/designer'
-            element={<DesignerPage />}
-          />
+            element={<DesignerPage />}>
+            <Route
+              path='line'
+              element={<Linepage/>}/>
+          </Route>
           <Route
             path='/aboutme'
             element={<AboutMePage />}
