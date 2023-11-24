@@ -8,12 +8,12 @@ import Blogpage from './pages/Blogpage';
 import AboutMePage from './pages/AboutMePage';
 import NavigationBar from './components/Navbar/NavBar';
 import Linepage from './pages/Linepage';
+import SeparatorPage from './pages/SeparatorPage';
 
 function App() {
   return (
     <BrowserRouter>
       <NavigationBar/>
-      <Container>
         <Routes>
           <Route
             path='/'
@@ -29,13 +29,15 @@ function App() {
             <Route
               path='line'
               element={<Linepage/>}/>
+            <Route
+              path='separator'
+              element={<SeparatorPage />} />
           </Route>
           <Route
             path='/aboutme'
             element={<AboutMePage />}
           />
         </Routes>
-      </Container>
     </BrowserRouter>
   );
 }
