@@ -30,7 +30,13 @@ const Linepage = () => {
   return (
     <Container>
       <Button onClick={() => setShowAddLineDialog(true)}>Add new Line Calculation</Button>
-
+      <form>
+        <label>El primer input</label>
+        <input type='text'></input>
+        <label>El Segundo input</label>
+        <input type='number'></input>
+        <button type='submit'>Submit</button>
+      </form>
       <Row xs={1} md={2} xl={3} className='g-4'>
         {lines.map(line => (
           <Col key={line._id}>
