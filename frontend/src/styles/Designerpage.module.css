@@ -1,6 +1,11 @@
-.layout {
+.layoutRow {
   display: flex;
   flex-direction: row;
+}
+
+.layoutColumn {
+  display: flex;
+  flex-direction: column;
 }
 
 .aside {
