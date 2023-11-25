@@ -11,7 +11,7 @@ const DesignerPage = () => {
             <Accordion.Item eventKey="0">
               <Accordion.Header>Líneas</Accordion.Header>
               <Accordion.Body className={styles.layoutColumn}>
-                <Link to="/designer/line">
+                <Link to="/designer/line/singlephase">
                   <Button>Una Fase</Button>
                 </Link>
                 <Link to="/designer/line">
@@ -48,7 +48,6 @@ const DesignerPage = () => {
         </main>
       </div>
     </body>
-
   )
 }
 

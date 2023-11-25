@@ -12,7 +12,7 @@ async function fetchData(input: RequestInfo, init?: RequestInit) {
 }
 
 export async function fetchLines(): Promise<Line[]> {
-  const response = await fetchData("/line", { method: "GET" });
+  const response = await fetchData("/line/singlephase", { method: "GET" });
   return response.json();
 }
 
@@ -22,7 +22,7 @@ export interface LineInput {
 }
 
 export async function createLine(line: LineInput ): Promise<Line> {
-  const response = await fetchData("/line/",
+  const response = await fetchData("/line/singlephase",
   {
     method: "POST",
     headers: {

@@ -5,7 +5,7 @@ import createHttpError, {isHttpError} from "http-errors";
 const app = express();
 
 app.use(express.json());
-app.use("/line", router );
+app.use("/line/singlephase", router );
 
 app.use((req, res, next) => {
   const error = createHttpError(404, "url not found");

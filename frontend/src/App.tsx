@@ -27,8 +27,9 @@ function App() {
             path='/designer'
             element={<DesignerPage />}>
             <Route
-              path='line'
-              element={<Linepage/>}/>
+              path='line/singlephase'
+              element={<Linepage/>}>
+            </Route>
             <Route
               path='separator'
               element={<SeparatorPage />} />
