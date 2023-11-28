@@ -27,7 +27,7 @@ function App() {
             path='/designer'
             element={<DesignerPage />}>
             <Route
-              path='line/singlephase'
+              path='line/singlephase/liquid'
               element={<Linepage/>}>
             </Route>
             <Route

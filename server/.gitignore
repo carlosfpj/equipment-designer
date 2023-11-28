@@ -204,5 +204,6 @@ $RECYCLE.BIN/
 *.docx
 *.xlsx
 *.xls
+*.tmp
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,react,node,visualstudiocode
