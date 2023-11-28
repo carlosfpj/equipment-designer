@@ -199,4 +199,10 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+#Word and excel documents and calculations
+*.doc
+*.docx
+*.xlsx
+*.xls
+
 # End of https://www.toptal.com/developers/gitignore/api/windows,react,node,visualstudiocode
