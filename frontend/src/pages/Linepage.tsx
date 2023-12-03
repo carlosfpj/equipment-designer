@@ -6,8 +6,9 @@ import styles from '../styles/LinePage.module.css';
 import AddLineDialog from '../components/addLinesDialog';
 import Line from '../components/Line';
 import { Container } from 'react-bootstrap';
-import * as NotesApi from '../network/line_api';
+import * as LinesApi from '../network/line_api';
 import { Line as LineModel } from '../models/line';
+import fig1 from '../images/1.png';
 
 
 const Linepage = () => {
@@ -17,7 +18,7 @@ const Linepage = () => {
   useEffect(() => {
     async function loadNotes() {
       try {
-        const lines = await NotesApi.fetchLines();
+        const lines = await LinesApi.fetchLines();
         setLines(lines);
       } catch (error) {
         console.error(error);
@@ -43,8 +44,17 @@ const Linepage = () => {
       <p>1.	Flow velocities in liquid lines may be read from figure 2.1 or may be calculated using the following
          derived equation:</p>
 
-      <p>V1 = 0.012 x Q1 / d12</p>
+      <p>V&#8321; = 0.012 x Q&#8321; / d&#8321;&#xb2;</p>
 
+      <p>where:
+        <br/>
+        V&#8321; = average liquid flow velocity, feet/second.<br/>
+        Q&#8321; = liquid flow rate, barrels/day.<br/>
+        d&#8321; = pipe inside diameter, inches.
+      </p>
+
+      <img alt='velocity in liquid lines' src={fig1}></img>
+      <br/>
       <Button onClick={() => setShowAddLineDialog(true)}>Add new Line Calculation</Button>
 
       <Row xs={1} md={2} xl={3} className='g-4'>

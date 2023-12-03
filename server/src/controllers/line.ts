@@ -3,6 +3,10 @@ import lineSize from "../models/lineSize";
 import createHttpError from "http-errors";
 import mongoose from "mongoose";
 
+const ACCEPTED_ORIGINS = [
+  'http://localhost:3000/designer/line/singlephase/liquid'
+]
+
 export const getlines: RequestHandler = async (req , res, next) => {
   try {
     const line = await lineSize.find().exec();
@@ -27,7 +31,6 @@ export const getline: RequestHandler = async (req, res, next) => {
       next(error);
     }
 }
-
 interface CreateLine {
   title?: string,
   flow?: number,
@@ -106,5 +109,14 @@ export const deleteLine: RequestHandler = async(req,res,next) => {
 
   } catch (error) {
     next(error);
+  }
+}
+
+export const getImages: RequestHandler = async (req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  try {
+    console.log('respuesta OK CORS');
+  } catch (error) {
+    console.log(error);
   }
 }

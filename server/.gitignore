@@ -206,4 +206,7 @@ $RECYCLE.BIN/
 *.xls
 *.tmp
 
+#support docs
+docs
+
 # End of https://www.toptal.com/developers/gitignore/api/windows,react,node,visualstudiocode

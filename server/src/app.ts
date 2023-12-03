@@ -3,12 +3,15 @@ import express, { NextFunction, Request, Response } from 'express';
 import router from "./routes/line";
 import createHttpError, {isHttpError} from "http-errors";
 const app = express();
+import cors from 'cors';
+
 
 app.use(express.json());
+app.use(cors());
 app.use("/line/singlephase", router );
 
 app.use((req, res, next) => {
-  const error = createHttpError(404, "url not found");
+  const error = createHttpError(404, "url not found in equipment designer");
   next(error);
 });
 
