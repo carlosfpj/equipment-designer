@@ -9,6 +9,7 @@ import { Container } from 'react-bootstrap';
 import * as LinesApi from '../network/line_api';
 import { Line as LineModel } from '../models/line';
 import fig1 from '../images/1.png';
+import fig2 from '../images/2.png';
 
 
 const Linepage = () => {
@@ -54,7 +55,43 @@ const Linepage = () => {
       </p>
 
       <img alt='velocity in liquid lines' src={fig1}></img>
+
+      <p>Pressure drop (psi per 100 feet of flow length) for single phase liquid lines may be read
+        from figure 2 or may be calculated using the following equiation:
+      </p>
+
+      <p>&#8710;P = 0.00115f Q&#8321;&#xb2;S&#8321; / d&#8321;&#8309;</p>
       <br/>
+      <p>where:
+        <br />
+        &#8710;P = pressure drop, psi/100 feet.<br />
+        f = Moody friction factor, dimensionless.<br />
+        Q&#8321; = liquid flow rate, barrels/day.<br />
+        S&#8321; = liquid specific gravity (water = 1).<br />
+        d&#8321; = pipe inside diameter, inches.<br />
+      </p><br />
+
+      <img alt='pressure drop in liquid lines' src={fig2}></img>
+      <br />
+
+      <p>The Moody friction factor, f is a function of the Reynolds number and the surface roughness of
+        the pipe. The modified Moody diagram, figure 3, may be used to determine the friction factor once
+        the Reynolds number is known. The Reynolds numbre may be determined by the following equiation:
+      </p>
+
+      <p>Re = &rho;<sub>L</sub> d<sub>f</sub> V<sub>L</sub> / &mu;<sub>L</sub> </p>
+      <br />
+      <p>where:
+        <br />
+        Re = Reynolds number, dimensionless.<br />
+        &rho;<sub>L</sub> = liquid density, lb/ft<sup>3</sup><br />
+        d<sub>f</sub> = pipe inside diameter, ft.<br/>
+        V<sub>L</sub> = liquid flow velocity, ft/sec.<br/>
+        &mu;<sub>L</sub> = liquid viscosity, lb/ft-sec, or <br/>
+        <span>" "</span> = centipoise divided by 1488, or <br />
+        <span>" "</span> = centistokes times specific gravity divided by 1488<br />
+      </p>
+
       <Button onClick={() => setShowAddLineDialog(true)}>Add new Line Calculation</Button>
 
       <Row xs={1} md={2} xl={3} className='g-4'>

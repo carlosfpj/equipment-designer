@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { Navbar, Container } from "react-bootstrap";
 import "./NavBar.css";
+import logo from "./../../icons/logo.jpg";
 
 const NavigationBar = () => {
 
@@ -18,7 +19,7 @@ const NavigationBar = () => {
           <li>
             <Navbar.Brand>
               <img
-                src="../icons/logo.jpg"
+                src={logo}
                 alt=""
                 width="30"
                 height="30"
