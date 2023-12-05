@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, SyntheticEvent, FormEvent, ChangeEvent, ChangeEventHandler } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
@@ -10,11 +10,29 @@ import * as LinesApi from '../network/line_api';
 import { Line as LineModel } from '../models/line';
 import fig1 from '../images/1.png';
 import fig2 from '../images/2.png';
+import fig3 from '../images/3.png';
 
 
 const Linepage = () => {
   const [lines, setLines] = useState<LineModel[]>([]);
   const [showAddLineDialog, setShowAddLineDialog] = useState(false);
+  const [flowRate, setFlowRate] = useState(0);
+  const [pipeDiameter, setPipeDiameter] = useState(0);
+
+  const handleFlowChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+    const flowRate = Number(e.target.value);
+    setFlowRate(flowRate);
+  };
+
+  const handlepipeDiameterChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+    const pipeDiameter = Number(e.target.value);
+    setPipeDiameter(pipeDiameter);
+  };
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    console.log("click en submit");
+  }
 
   useEffect(() => {
     async function loadNotes() {
@@ -90,9 +108,22 @@ const Linepage = () => {
         &mu;<sub>L</sub> = liquid viscosity, lb/ft-sec, or <br/>
         <span>" "</span> = centipoise divided by 1488, or <br />
         <span>" "</span> = centistokes times specific gravity divided by 1488<br />
-      </p>
+      </p><br />
+
+      <img alt='Moody friction factor' src={fig3}></img><br />
 
       <Button onClick={() => setShowAddLineDialog(true)}>Add new Line Calculation</Button>
+
+      <p>Please insert data to calculate</p>
+      <form onSubmit={handleSubmit}>
+        <label>Liquid flow rate[barrels/day]</label>
+        <input type='text' onChange={handleFlowChange}/><br/>
+        <label>pipe inside diameter[inches]</label>
+        <input type='text' onChange={handlepipeDiameterChange} />
+        <button>submit</button>
+      </form>
+
+      <p>results</p>
 
       <Row xs={1} md={2} xl={3} className='g-4'>
         {lines.map(line => (
