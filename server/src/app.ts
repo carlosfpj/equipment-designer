@@ -2,9 +2,9 @@ import "dotenv/config";
 import express, { NextFunction, Request, Response } from 'express';
 import router from "./routes/line";
 import createHttpError, {isHttpError} from "http-errors";
-const app = express();
 import cors from 'cors';
 
+const app = express();
 
 app.use(express.json());
 app.use(cors());

@@ -22,16 +22,33 @@ const Linepage = () => {
   const handleFlowChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     const flowRate = Number(e.target.value);
     setFlowRate(flowRate);
+    console.log(flowRate);
+
   };
 
   const handlepipeDiameterChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     const pipeDiameter = Number(e.target.value);
     setPipeDiameter(pipeDiameter);
+    console.log(pipeDiameter);
   };
 
   const handleSubmit = (e: FormEvent) => {
+
     e.preventDefault();
     console.log("click en submit");
+    try {
+
+      let res = fetch("http://localhost:5000/line/singlephase/", {
+        method: "POST",
+        body: JSON.stringify({
+          flow: flowRate,
+          diameter: pipeDiameter
+        }),
+      });
+
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   useEffect(() => {
