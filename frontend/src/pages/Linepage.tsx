@@ -38,8 +38,11 @@ const Linepage = () => {
     console.log("click en submit");
     try {
 
-      let res = fetch("http://localhost:5000/line/singlephase/", {
+      let req = fetch("http://localhost:5000/line/singlephase/", {
         method: "POST",
+        // headers: {
+        //   accept: 'application/json',
+        // },
         body: JSON.stringify({
           flow: flowRate,
           diameter: pipeDiameter

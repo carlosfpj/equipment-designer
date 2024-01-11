@@ -32,29 +32,31 @@ export const getline: RequestHandler = async (req, res, next) => {
     }
 }
 interface CreateLine {
-  flow?: number,
-  diameter?: number,
+  flow?: string,
+  diameter?: string,
 }
 
-export const createline: RequestHandler<unknown, unknown, CreateLine, unknown> = async (req, res, next) => {
+export const createline: RequestHandler<unknown, unknown, CreateLine, unknown > = async (req, res, next) => {
+  console.log(req.body);
   const flow = req.body.flow;
   const diameter = req.body.diameter;
+  console.log(flow);
 
-  console.log("this is flow: " + flow + " and this is diameter: " + diameter)
-  try {
-    if(!flow || !diameter) {
-      throw createHttpError(400, "Line calculations must have flow or diameter");
-    }
-    // const newLine = await lineSize.create({
-    //   title: titulo,
-    //   flow: flow,
-    // });
-    const newLine = flow + diameter;
-    console.log(newLine)
-    res.status(201).json(newLine);
-  } catch (error) {
-    next(error)
-  }
+  console.log("el flujo es este: " + flow + " y el diametro es este: " + diameter)
+  // try {
+  //   if(!flow || !diameter) {
+  //     throw createHttpError(400, "Line calculations must have flow or diameter");
+  //   }
+  //   // const newLine = await lineSize.create({
+  //   //   title: titulo,
+  //   //   flow: flow,
+  //   // });
+  //   const newLine = flow + diameter;
+  //   console.log(newLine)
+  //   res.status(201).json(newLine);
+  // } catch (error) {
+  //   next(error)
+  // }
 };
 
 

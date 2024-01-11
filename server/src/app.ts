@@ -1,14 +1,16 @@
 import "dotenv/config";
 import express, { NextFunction, Request, Response } from 'express';
-import router from "./routes/line";
 import createHttpError, {isHttpError} from "http-errors";
 import cors from 'cors';
+import router from "./routes/line";
+import bodyParser from "body-parser";
 
 const app = express();
 
 app.use(express.json());
+app.use(bodyParser.json());
 app.use(cors());
-app.use("/line/singlephase", router );
+app.use("/line/singlephase/", router );
 
 app.use((req, res, next) => {
   const error = createHttpError(404, "url not found in equipment designer");
