@@ -43,20 +43,20 @@ export const createline: RequestHandler<unknown, unknown, CreateLine, unknown > 
   console.log(flow);
 
   console.log("el flujo es este: " + flow + " y el diametro es este: " + diameter)
-  // try {
-  //   if(!flow || !diameter) {
-  //     throw createHttpError(400, "Line calculations must have flow or diameter");
-  //   }
-  //   // const newLine = await lineSize.create({
-  //   //   title: titulo,
-  //   //   flow: flow,
-  //   // });
-  //   const newLine = flow + diameter;
-  //   console.log(newLine)
-  //   res.status(201).json(newLine);
-  // } catch (error) {
-  //   next(error)
-  // }
+  try {
+    if(!flow || !diameter) {
+      throw createHttpError(400, "Line calculations must have flow or diameter");
+    }
+    // const newLine = await lineSize.create({
+    //   title: titulo,
+    //   flow: flow,
+    // });
+    const newLine = flow + diameter;
+    console.log(newLine)
+    res.status(201).json(newLine);
+  } catch (error) {
+    next(error)
+  }
 };
 
 

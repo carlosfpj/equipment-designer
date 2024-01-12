@@ -16,42 +16,40 @@ import fig3 from '../images/3.png';
 const Linepage = () => {
   const [lines, setLines] = useState<LineModel[]>([]);
   const [showAddLineDialog, setShowAddLineDialog] = useState(false);
-  const [flowRate, setFlowRate] = useState(0);
-  const [pipeDiameter, setPipeDiameter] = useState(0);
+  const [flowRate, setFlowRate] = useState("");
+  const [pipeDiameter, setPipeDiameter] = useState("");
 
   const handleFlowChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    const flowRate = Number(e.target.value);
+    const flowRate = e.target.value;
     setFlowRate(flowRate);
-    console.log(flowRate);
-
+    console.log(typeof (flowRate));
   };
 
   const handlepipeDiameterChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    const pipeDiameter = Number(e.target.value);
+    const pipeDiameter = e.target.value;
     setPipeDiameter(pipeDiameter);
     console.log(pipeDiameter);
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
 
     e.preventDefault();
     console.log("click en submit");
-    try {
-
-      let req = fetch("http://localhost:5000/line/singlephase/", {
-        method: "POST",
-        // headers: {
-        //   accept: 'application/json',
-        // },
-        body: JSON.stringify({
-          flow: flowRate,
-          diameter: pipeDiameter
-        }),
-      });
-
-    } catch (error) {
-      console.log(error);
-    }
+        try {
+          const res = await fetch("http://localhost:5000/line/singlephase/", {
+            method: "POST",
+            headers: {
+              "Content-Type": 'application/json',
+            },
+            body: JSON.stringify({
+              "flow": flowRate,
+              "diameter": pipeDiameter
+            }),
+          });
+          console.log(res);
+      } catch (error) {
+        console.log(error);
+      }
   }
 
   useEffect(() => {
