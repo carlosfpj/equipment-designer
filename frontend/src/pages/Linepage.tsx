@@ -18,6 +18,7 @@ const Linepage = () => {
   const [showAddLineDialog, setShowAddLineDialog] = useState(false);
   const [flowRate, setFlowRate] = useState("");
   const [pipeDiameter, setPipeDiameter] = useState("");
+  const [result, setResult] = useState();
 
   const handleFlowChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     const flowRate = e.target.value;
@@ -46,7 +47,15 @@ const Linepage = () => {
               "diameter": pipeDiameter
             }),
           });
-          console.log(res);
+          if(res.status === 200) {
+            const resJson = await res.json();
+            console.log(resJson);
+            setResult(resJson.velocity);
+          } else if (res.status === 400){
+            alert("flow and diameter is required for calculations");
+          } else {
+            console.log("an error has ocurred");
+          }
       } catch (error) {
         console.log(error);
       }
@@ -141,7 +150,7 @@ const Linepage = () => {
         <button>submit</button>
       </form>
 
-      <p>results</p>
+      <p>velocity: {result} ft/seg</p>
 
       <Row xs={1} md={2} xl={3} className='g-4'>
         {lines.map(line => (

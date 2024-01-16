@@ -37,10 +37,8 @@ interface CreateLine {
 }
 
 export const createline: RequestHandler<unknown, unknown, CreateLine, unknown > = async (req, res, next) => {
-  console.log(req.body);
-  const flow = req.body.flow;
-  const diameter = req.body.diameter;
-  console.log(flow);
+  const flow = Number(req.body.flow);
+  const diameter = Number(req.body.diameter);
 
   console.log("el flujo es este: " + flow + " y el diametro es este: " + diameter)
   try {
@@ -51,9 +49,11 @@ export const createline: RequestHandler<unknown, unknown, CreateLine, unknown > 
     //   title: titulo,
     //   flow: flow,
     // });
-    const newLine = flow + diameter;
-    console.log(newLine)
-    res.status(201).json(newLine);
+    const Calculated_Velocity = ((0.012 * flow) / (diameter**2));
+    console.log(Calculated_Velocity)
+    res.status(200).json({
+      velocity: Calculated_Velocity
+    });
   } catch (error) {
     next(error)
   }
