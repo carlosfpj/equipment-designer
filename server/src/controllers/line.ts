@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 
 const ACCEPTED_ORIGINS = [
   'http://localhost:3000/designer/line/singlephase/liquid'
-]
+];
 
 export const getlines: RequestHandler = async (req , res, next) => {
   try {
@@ -34,13 +34,17 @@ export const getline: RequestHandler = async (req, res, next) => {
 interface CreateLine {
   flow?: string,
   diameter?: string,
+  SG?: string,
 }
 
-export const createline: RequestHandler<unknown, unknown, CreateLine, unknown > = async (req, res, next) => {
+export const calculateVelocity: RequestHandler<unknown, unknown, CreateLine, unknown > = async (req, res, next) => {
   const flow = Number(req.body.flow);
   const diameter = Number(req.body.diameter);
+  const SG = Number(req.body.SG);
 
-  console.log("el flujo es este: " + flow + " y el diametro es este: " + diameter)
+  console.log("el flujo es este: " + flow
+   + ", el diametro es este: " + diameter
+   + "la SG es esta: " + SG);
   try {
     if(!flow || !diameter) {
       throw createHttpError(400, "Line calculations must have flow or diameter");
