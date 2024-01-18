@@ -16,6 +16,8 @@ const Linepage = () => {
   const [flowRate, setFlowRate] = useState("");
   const [pipeDiameter, setPipeDiameter] = useState("");
   const [SG, setSG] = useState("");
+  const [liquidDensity, setLiquidDensity] = useState("");
+  const [liquidViscocity, setLiquidViscocity] = useState("");
   const [result, setResult] = useState();
 
   const handleFlowChange: ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -33,6 +35,16 @@ const Linepage = () => {
     setSG(liquidSG);
   }
 
+  const handleDensityChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+    const liquidDensity = e.target.value;
+    setLiquidDensity(liquidDensity);
+  }
+
+  const handleViscocityChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+    const liquidViscocity = e.target.value;
+    setLiquidViscocity(liquidViscocity);
+  }
+
   const handleSubmit = async (e: FormEvent) => {
 
     e.preventDefault();
@@ -47,6 +59,8 @@ const Linepage = () => {
               "flow": flowRate,
               "diameter": pipeDiameter,
               "SG": SG,
+              "liquidDensity": liquidDensity,
+              "liquidViscocity": liquidViscocity,
             }),
           });
           if(res.status === 200) {
@@ -93,6 +107,10 @@ const Linepage = () => {
         <input type='text' onChange={handlepipeDiameterChange} /><br/>
         <label>Specific Gravity</label>
         <input type='text' onChange={handleSGChange} /><br/>
+        <label>Liquid Density</label>
+        <input type='text' onChange={handleDensityChange} /><br />
+        <label>Liquid Viscocity</label>
+        <input type='text' onChange={handleViscocityChange} /><br />
         <button>submit</button>
       </form>
 

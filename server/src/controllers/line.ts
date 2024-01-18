@@ -7,6 +7,43 @@ const ACCEPTED_ORIGINS = [
   'http://localhost:3000/designer/line/singlephase/liquid'
 ];
 
+interface CreateLine {
+  flow?: string,
+  diameter?: string,
+  SG?: string,
+  liquidDensity?: string,
+  liquidViscocity?: string,
+}
+
+export const receiveParams: RequestHandler<unknown, unknown, CreateLine, unknown> = async (req, res, next) => {
+  const flow = Number(req.body.flow);
+  const diameter = Number(req.body.diameter);
+  const SG = Number(req.body.SG);
+  const liquidDensity = Number(req.body.liquidDensity);
+  const liquidViscocity = Number(req.body.liquidViscocity);
+
+  console.log("el flujo es este: " + flow
+    + ", el diametro es este: " + diameter
+    + " la SG es esta: " + SG + ", la densidad es: " + liquidDensity
+    + " la viscocidad es: " + liquidViscocity);
+  try {
+    if (!flow || !diameter) {
+      throw createHttpError(400, "Line calculations must have flow or diameter");
+    }
+    // const newLine = await lineSize.create({
+    //   title: titulo,
+    //   flow: flow,
+    // });
+    const Calculated_Velocity = ((0.012 * flow) / (diameter ** 2));
+    console.log(Calculated_Velocity);
+    res.status(200).json({
+      velocity: Calculated_Velocity
+    });
+  } catch (error) {
+    next(error)
+  }
+};
+
 export const getlines: RequestHandler = async (req , res, next) => {
   try {
     const line = await lineSize.find().exec();
@@ -31,38 +68,6 @@ export const getline: RequestHandler = async (req, res, next) => {
       next(error);
     }
 }
-interface CreateLine {
-  flow?: string,
-  diameter?: string,
-  SG?: string,
-}
-
-export const calculateVelocity: RequestHandler<unknown, unknown, CreateLine, unknown > = async (req, res, next) => {
-  const flow = Number(req.body.flow);
-  const diameter = Number(req.body.diameter);
-  const SG = Number(req.body.SG);
-
-  console.log("el flujo es este: " + flow
-   + ", el diametro es este: " + diameter
-   + "la SG es esta: " + SG);
-  try {
-    if(!flow || !diameter) {
-      throw createHttpError(400, "Line calculations must have flow or diameter");
-    }
-    // const newLine = await lineSize.create({
-    //   title: titulo,
-    //   flow: flow,
-    // });
-    const Calculated_Velocity = ((0.012 * flow) / (diameter**2));
-    console.log(Calculated_Velocity)
-    res.status(200).json({
-      velocity: Calculated_Velocity
-    });
-  } catch (error) {
-    next(error)
-  }
-};
-
 
 interface updateLineParams {
   lineId: string,
