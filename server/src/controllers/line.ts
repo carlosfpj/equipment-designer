@@ -7,7 +7,7 @@ const ACCEPTED_ORIGINS = [
   'http://localhost:3000/designer/line/singlephase/liquid'
 ];
 
-interface CreateLine {
+interface LiquidParams {
   flow?: string,
   diameter?: string,
   SG?: string,
@@ -15,34 +15,47 @@ interface CreateLine {
   liquidViscocity?: string,
 }
 
-export const receiveParams: RequestHandler<unknown, unknown, CreateLine, unknown> = async (req, res, next) => {
+export const singlePhaseLiquidParams: RequestHandler<unknown, unknown, LiquidParams, unknown> = async (req, res, next) => {
   const flow = Number(req.body.flow);
   const diameter = Number(req.body.diameter);
   const SG = Number(req.body.SG);
   const liquidDensity = Number(req.body.liquidDensity);
   const liquidViscocity = Number(req.body.liquidViscocity);
 
-  console.log("el flujo es este: " + flow
-    + ", el diametro es este: " + diameter
-    + " la SG es esta: " + SG + ", la densidad es: " + liquidDensity
-    + " la viscocidad es: " + liquidViscocity);
   try {
     if (!flow || !diameter) {
-      throw createHttpError(400, "Line calculations must have flow or diameter");
+      throw createHttpError(400, "Liquid Velocity Must have flow and diameter");
     }
-    // const newLine = await lineSize.create({
-    //   title: titulo,
-    //   flow: flow,
-    // });
-    const Calculated_Velocity = ((0.012 * flow) / (diameter ** 2));
-    console.log(Calculated_Velocity);
+    const liquidVelocity = calculateLiquidVelocity(flow, diameter);
+
+    // if (!SG || !liquidDensity || !liquidViscocity) {
+    //   throw createHttpError(400, "Liquid Pressure drop must have SG and liquid density and liquid viscocity")
+    // }
+
+    const liquidPressureDrop = calculateLiquidPressureDrop(flow, diameter, SG, liquidDensity, liquidViscocity);
+
     res.status(200).json({
-      velocity: Calculated_Velocity
+      liquidVelocity,
+      liquidPressureDrop
     });
   } catch (error) {
     next(error)
   }
 };
+
+const calculateLiquidVelocity = (flow: number, diameter: number)=> {
+  const calculated_Velocity = ((0.012 * flow) / (diameter ** 2));
+  return calculated_Velocity
+}
+
+const calculateLiquidPressureDrop = ( flow: number,
+                                      diameter: number,
+                                      SG: number,
+                                      liquidDensity: number,
+                                      liquidViscocity: number) => {
+  console.log(flow, diameter, SG, liquidDensity, liquidViscocity);
+  return flow;
+}
 
 export const getlines: RequestHandler = async (req , res, next) => {
   try {
@@ -135,3 +148,8 @@ export const getImages: RequestHandler = async (req, res, next) => {
     console.log(error);
   }
 }
+
+// const newLine = await lineSize.create({
+//   title: titulo,
+//   flow: flow,
+// });

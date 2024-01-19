@@ -66,7 +66,7 @@ const Linepage = () => {
           if(res.status === 200) {
             const resJson = await res.json();
             console.log(resJson);
-            setResult(resJson.velocity);
+            setResult(resJson.liquidVelocity);
           } else if (res.status === 400){
             alert("flow and diameter is required for calculations");
           } else {
@@ -101,6 +101,13 @@ const Linepage = () => {
 
       <p>Please insert data to calculate</p>
       <form onSubmit={handleSubmit}>
+        <input type='radio' id='vel' name='a' value="vel"/>
+        <label htmlFor="vel">Velocity</label>
+        <input type='radio' id='Pdrop' name='a' value="Pdrop" />
+        <label htmlFor="Pdrop">Pressure Drop</label>
+        <input type='radio' id='VP' name='a' value="VP" />
+        <label htmlFor="VP">Velocity and Pressure Drop</label>
+        <br /><br />
         <label>Liquid flow rate[barrels/day]</label>
         <input type='text' onChange={handleFlowChange}/><br/>
         <label>pipe inside diameter[inches]</label>
