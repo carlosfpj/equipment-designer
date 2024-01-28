@@ -13,6 +13,7 @@ import { Line as LineModel } from '../models/line';
 const Linepage = () => {
   const [lines, setLines] = useState<LineModel[]>([]);
   const [showAddLineDialog, setShowAddLineDialog] = useState(false);
+  const [option, setOption] = useState("");
   const [flowRate, setFlowRate] = useState("");
   const [pipeDiameter, setPipeDiameter] = useState("");
   const [SG, setSG] = useState("");
@@ -43,6 +44,11 @@ const Linepage = () => {
   const handleViscocityChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     const liquidViscocity = e.target.value;
     setLiquidViscocity(liquidViscocity);
+  }
+
+  const handleCalculateOption: ChangeEventHandler<HTMLInputElement> = (e) => {
+    console.log(e.target.value);
+    setOption(e.target.value);
   }
 
   const handleSubmit = async (e: FormEvent) => {
@@ -101,11 +107,30 @@ const Linepage = () => {
 
       <p>Please insert data to calculate</p>
       <form onSubmit={handleSubmit}>
-        <input type='radio' id='vel' name='a' value="vel"/>
+        <label>select what you desire</label><br/>
+        <input type='radio'
+               id='vel'
+               name='a'
+               value="vel"
+               checked={option === "vel"}
+               onChange={handleCalculateOption}
+        />
         <label htmlFor="vel">Velocity</label>
-        <input type='radio' id='Pdrop' name='a' value="Pdrop" />
+        <input type='radio'
+               id='Pdrop'
+               name='a'
+               value="Pdrop"
+               checked={option === "Pdrop"}
+               onChange={handleCalculateOption}
+        />
         <label htmlFor="Pdrop">Pressure Drop</label>
-        <input type='radio' id='VP' name='a' value="VP" />
+        <input type='radio'
+               id='VP'
+               name='a'
+               value="VP"
+               checked={option === "VP"}
+               onChange={handleCalculateOption}
+        />
         <label htmlFor="VP">Velocity and Pressure Drop</label>
         <br /><br />
         <label>Liquid flow rate[barrels/day]</label>
