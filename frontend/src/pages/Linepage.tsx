@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FormEvent, ChangeEventHandler } from 'react';
+import React, { useState, useEffect, FormEvent, ChangeEventHandler, MouseEventHandler } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
@@ -13,7 +13,8 @@ import { Line as LineModel } from '../models/line';
 const Linepage = () => {
   const [lines, setLines] = useState<LineModel[]>([]);
   const [showAddLineDialog, setShowAddLineDialog] = useState(false);
-  const [option, setOption] = useState("");
+  const [option, setOption] = useState(0);
+  const [showOption, setShowOption] = useState(false);
   const [flowRate, setFlowRate] = useState("");
   const [pipeDiameter, setPipeDiameter] = useState("");
   const [SG, setSG] = useState("");
@@ -46,10 +47,19 @@ const Linepage = () => {
     setLiquidViscocity(liquidViscocity);
   }
 
-  const handleCalculateOption: ChangeEventHandler<HTMLInputElement> = (e) => {
-    console.log(e.target.value);
-    setOption(e.target.value);
+  const handleCalculateOption = (value: number) => {
+    setOption(value);
+    if(option === 0) {
+      setShowOption(false);
+    } else if (option === 1 || option === 2) {
+     setShowOption(true);
+    }
   }
+
+  useEffect(() => {
+    console.log(option);
+    handleCalculateOption(option);
+  }, [option])
 
   const handleSubmit = async (e: FormEvent) => {
 
@@ -109,27 +119,29 @@ const Linepage = () => {
       <form onSubmit={handleSubmit}>
         <label>select what you desire</label><br/>
         <input type='radio'
-               id='vel'
-               name='a'
-               value="vel"
-               checked={option === "vel"}
-               onChange={handleCalculateOption}
+          id='vel'
+          name='a'
+          value="vel"
+          checked={option === 0}
+          onChange={() => handleCalculateOption(0)}
         />
         <label htmlFor="vel">Velocity</label>
+        <br /><br />
         <input type='radio'
-               id='Pdrop'
-               name='a'
-               value="Pdrop"
-               checked={option === "Pdrop"}
-               onChange={handleCalculateOption}
+          id='Pdrop'
+          name='a'
+          value="Pdrop"
+          checked={option === 1}
+          onChange={() => handleCalculateOption(1)}
         />
         <label htmlFor="Pdrop">Pressure Drop</label>
+        <br /><br />
         <input type='radio'
-               id='VP'
-               name='a'
-               value="VP"
-               checked={option === "VP"}
-               onChange={handleCalculateOption}
+          id='VP'
+          name='a'
+          value="VP"
+          checked={option === 2}
+          onChange={() => handleCalculateOption(2)}
         />
         <label htmlFor="VP">Velocity and Pressure Drop</label>
         <br /><br />
@@ -137,13 +149,16 @@ const Linepage = () => {
         <input type='text' onChange={handleFlowChange}/><br/>
         <label>pipe inside diameter[inches]</label>
         <input type='text' onChange={handlepipeDiameterChange} /><br/>
-        <label>Specific Gravity</label>
-        <input type='text' onChange={handleSGChange} /><br/>
-        <label>Liquid Density</label>
-        <input type='text' onChange={handleDensityChange} /><br />
-        <label>Liquid Viscocity</label>
-        <input type='text' onChange={handleViscocityChange} /><br />
-        <button>submit</button>
+        {showOption &&
+          <div>
+            <label>Specific Gravity</label>
+            <input type='text' onChange={handleSGChange} /><br />
+            <label>Liquid Density</label>
+            <input type='text' onChange={handleDensityChange} /><br />
+            <label>Liquid Viscocity</label>
+            <input type='text' onChange={handleViscocityChange} /><br />
+          </div>}
+          <button>submit</button>
       </form>
 
       <p>velocity: {result} ft/seg</p>
