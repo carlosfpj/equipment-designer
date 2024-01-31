@@ -66,27 +66,49 @@ const Linepage = () => {
     e.preventDefault();
     console.log("click en submit");
         try {
-          const res = await fetch("http://localhost:5000/line/singlephase/", {
-            method: "POST",
-            headers: {
-              "Content-Type": 'application/json',
-            },
-            body: JSON.stringify({
-              "flow": flowRate,
-              "diameter": pipeDiameter,
-              "SG": SG,
-              "liquidDensity": liquidDensity,
-              "liquidViscocity": liquidViscocity,
-            }),
-          });
-          if(res.status === 200) {
-            const resJson = await res.json();
-            console.log(resJson);
-            setResult(resJson.liquidVelocity);
-          } else if (res.status === 400){
-            alert("flow and diameter is required for calculations");
+          if(!showOption) {
+            const res = await fetch("http://localhost:5000/line/singlephase/vel", {
+              method: "POST",
+              headers: {
+                "Content-Type": 'application/json',
+              },
+              body: JSON.stringify({
+                "flow": flowRate,
+                "diameter": pipeDiameter,
+              }),
+            });
+            if (res.status === 200) {
+              const resJson = await res.json();
+              console.log(resJson);
+              setResult(resJson.liquidVelocity);
+            } else if (res.status === 400) {
+              alert("flow and diameter is required for calculations");
+            } else {
+              console.log("an error has ocurred");
+            }
           } else {
-            console.log("an error has ocurred");
+            const res = await fetch("http://localhost:5000/line/singlephase/vp", {
+              method: "POST",
+              headers: {
+                "Content-Type": 'application/json',
+              },
+              body: JSON.stringify({
+                "flow": flowRate,
+                "diameter": pipeDiameter,
+                "SG": SG,
+                "liquidDensity": liquidDensity,
+                "liquidViscocity": liquidViscocity,
+              }),
+            });
+            if (res.status === 200) {
+              const resJson = await res.json();
+              console.log(resJson);
+              setResult(resJson.liquidVelocity);
+            } else if (res.status === 400) {
+              alert("flow and diameter is required for calculations");
+            } else {
+              console.log("an error has ocurred");
+            }
           }
       } catch (error) {
         console.log(error);
@@ -146,17 +168,17 @@ const Linepage = () => {
         <label htmlFor="VP">Velocity and Pressure Drop</label>
         <br /><br />
         <label>Liquid flow rate[barrels/day]</label>
-        <input type='text' onChange={handleFlowChange}/><br/>
+        <input type='text' onChange={handleFlowChange} value={flowRate}/><br/>
         <label>pipe inside diameter[inches]</label>
-        <input type='text' onChange={handlepipeDiameterChange} /><br/>
+        <input type='text' onChange={handlepipeDiameterChange} value={pipeDiameter} /><br/>
         {showOption &&
           <div>
             <label>Specific Gravity</label>
-            <input type='text' onChange={handleSGChange} /><br />
+            <input type='text' onChange={handleSGChange} value={SG} /><br />
             <label>Liquid Density</label>
-            <input type='text' onChange={handleDensityChange} /><br />
+            <input type='text' onChange={handleDensityChange} value={liquidDensity} /><br />
             <label>Liquid Viscocity</label>
-            <input type='text' onChange={handleViscocityChange} /><br />
+            <input type='text' onChange={handleViscocityChange} value={liquidViscocity} /><br />
           </div>}
           <button>submit</button>
       </form>

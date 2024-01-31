@@ -15,7 +15,7 @@ interface LiquidParams {
   liquidViscocity?: string,
 }
 
-export const singlePhaseLiquidParams: RequestHandler<unknown, unknown, LiquidParams, unknown> = async (req, res, next) => {
+export const singlePhaseLiquidVelocityParams: RequestHandler<unknown, unknown, LiquidParams, unknown> = async (req, res, next) => {
   const flow = Number(req.body.flow);
   const diameter = Number(req.body.diameter);
   const SG = Number(req.body.SG);
@@ -37,6 +37,37 @@ export const singlePhaseLiquidParams: RequestHandler<unknown, unknown, LiquidPar
     res.status(200).json({
       liquidVelocity,
       liquidPressureDrop
+    });
+  } catch (error) {
+    next(error)
+  }
+};
+
+export const singlePhaseLiquidVpParams: RequestHandler<unknown, unknown, LiquidParams, unknown> = async (req, res, next) => {
+  const flow = Number(req.body.flow);
+  const diameter = Number(req.body.diameter);
+  const SG = Number(req.body.SG);
+  const liquidDensity = Number(req.body.liquidDensity);
+  const liquidViscocity = Number(req.body.liquidViscocity);
+
+  try {
+    if (!flow || !diameter) {
+      throw createHttpError(400, "Liquid Velocity Must have flow and diameter");
+    }
+    const liquidVelocity = calculateLiquidVelocity(flow, diameter);
+
+    // if (!SG || !liquidDensity || !liquidViscocity) {
+    //   throw createHttpError(400, "Liquid Pressure drop must have SG and liquid density and liquid viscocity")
+    // }
+
+    const liquidPressureDrop = calculateLiquidPressureDrop(flow, diameter, SG, liquidDensity, liquidViscocity);
+
+    res.status(200).json({
+      liquidVelocity,
+      liquidPressureDrop,
+      SG,
+      liquidDensity,
+      liquidViscocity,
     });
   } catch (error) {
     next(error)
