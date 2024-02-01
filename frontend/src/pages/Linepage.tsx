@@ -15,11 +15,11 @@ const Linepage = () => {
   const [showAddLineDialog, setShowAddLineDialog] = useState(false);
   const [option, setOption] = useState(0);
   const [showOption, setShowOption] = useState(false);
-  const [flowRate, setFlowRate] = useState("");
-  const [pipeDiameter, setPipeDiameter] = useState("");
-  const [SG, setSG] = useState("");
-  const [liquidDensity, setLiquidDensity] = useState("");
-  const [liquidViscocity, setLiquidViscocity] = useState("");
+  const [flowRate, setFlowRate] = useState("0");
+  const [pipeDiameter, setPipeDiameter] = useState("0");
+  const [SG, setSG] = useState("0");
+  const [liquidDensity, setLiquidDensity] = useState("0");
+  const [liquidViscocity, setLiquidViscocity] = useState("0");
   const [result, setResult] = useState();
 
   const handleFlowChange: ChangeEventHandler<HTMLInputElement> = (e) => {

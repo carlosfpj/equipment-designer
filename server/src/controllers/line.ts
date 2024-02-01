@@ -18,9 +18,8 @@ interface LiquidParams {
 export const singlePhaseLiquidVelocityParams: RequestHandler<unknown, unknown, LiquidParams, unknown> = async (req, res, next) => {
   const flow = Number(req.body.flow);
   const diameter = Number(req.body.diameter);
-  const SG = Number(req.body.SG);
-  const liquidDensity = Number(req.body.liquidDensity);
-  const liquidViscocity = Number(req.body.liquidViscocity);
+
+  console.log("los parametros de velocidad han llegado al server");
 
   try {
     if (!flow || !diameter) {
@@ -28,15 +27,8 @@ export const singlePhaseLiquidVelocityParams: RequestHandler<unknown, unknown, L
     }
     const liquidVelocity = calculateLiquidVelocity(flow, diameter);
 
-    // if (!SG || !liquidDensity || !liquidViscocity) {
-    //   throw createHttpError(400, "Liquid Pressure drop must have SG and liquid density and liquid viscocity")
-    // }
-
-    const liquidPressureDrop = calculateLiquidPressureDrop(flow, diameter, SG, liquidDensity, liquidViscocity);
-
     res.status(200).json({
       liquidVelocity,
-      liquidPressureDrop
     });
   } catch (error) {
     next(error)
@@ -50,31 +42,27 @@ export const singlePhaseLiquidVpParams: RequestHandler<unknown, unknown, LiquidP
   const liquidDensity = Number(req.body.liquidDensity);
   const liquidViscocity = Number(req.body.liquidViscocity);
 
+  console.log("los parámetros de VP han llegado al servidor");
+
   try {
     if (!flow || !diameter) {
       throw createHttpError(400, "Liquid Velocity Must have flow and diameter");
     }
     const liquidVelocity = calculateLiquidVelocity(flow, diameter);
-
-    // if (!SG || !liquidDensity || !liquidViscocity) {
-    //   throw createHttpError(400, "Liquid Pressure drop must have SG and liquid density and liquid viscocity")
-    // }
+    const Re = calculateReynolds(liquidDensity, diameter, liquidVelocity, liquidViscocity);
+    const f = calculateMoodyFrictionFactor(Re);
 
     const liquidPressureDrop = calculateLiquidPressureDrop(flow, diameter, SG, liquidDensity, liquidViscocity);
 
     res.status(200).json({
-      liquidVelocity,
       liquidPressureDrop,
-      SG,
-      liquidDensity,
-      liquidViscocity,
     });
   } catch (error) {
     next(error)
   }
 };
 
-const calculateLiquidVelocity = (flow: number, diameter: number)=> {
+const calculateLiquidVelocity = (flow: number, diameter: number) => {
   const calculated_Velocity = ((0.012 * flow) / (diameter ** 2));
   return calculated_Velocity
 }
@@ -84,10 +72,35 @@ const calculateLiquidPressureDrop = ( flow: number,
                                       SG: number,
                                       liquidDensity: number,
                                       liquidViscocity: number) => {
-  console.log(flow, diameter, SG, liquidDensity, liquidViscocity);
-  return flow;
+
+
+  const DP = ((0.00115 * f) * (flow**2) * SG/ (diameter**5))
+  return DP;
 }
 
+const calculateReynolds = (liquidDensity: number,
+                           diameter: number,
+                           liquidVelocity: number ,
+                           liquidViscocity: number) => {
+
+  const Re = ((liquidDensity) * (diameter) * (liquidVelocity) / liquidViscocity );
+  return Re;
+}
+
+const calculateMoodyFrictionFactor = (Reynolds: number) => {
+
+  let f = 0;
+  if(Reynolds < 2300) {
+    f = (64 / Reynolds);
+  } else if( Reynolds > 4000) {
+    //aqui va la recursividad
+    1 / f[i] = 1.14-2log10((e/D) + (9.35/Reynolds*root(f[i])))
+  }
+  return f;
+}
+
+
+//END
 export const getlines: RequestHandler = async (req , res, next) => {
   try {
     const line = await lineSize.find().exec();
