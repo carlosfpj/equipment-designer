@@ -50,7 +50,7 @@ export const singlePhaseLiquidVpParams: RequestHandler<unknown, unknown, LiquidP
     }
     const liquidVelocity = calculateLiquidVelocity(flow, diameter);
     const Re = calculateReynolds(liquidDensity, diameter, liquidVelocity, liquidViscocity);
-    const f = calculateMoodyFrictionFactor(Re);
+    const f = calculateMoodyFrictionFactor(Re, diameter);
 
     const liquidPressureDrop = calculateLiquidPressureDrop(flow, diameter, SG, liquidDensity, liquidViscocity);
 
@@ -87,14 +87,23 @@ const calculateReynolds = (liquidDensity: number,
   return Re;
 }
 
-const calculateMoodyFrictionFactor = (Reynolds: number) => {
+const calculateMoodyFrictionFactor = (Reynolds: number, diameter: number) => {
 
   let f = 0;
   if(Reynolds < 2300) {
     f = (64 / Reynolds);
   } else if( Reynolds > 4000) {
-    //aqui va la recursividad
-    1 / f[i] = 1.14-2log10((e/D) + (9.35/Reynolds*root(f[i])))
+    let init = 0.001;
+    //relative Roughness = e/D, i have to fix this variable
+    const pipeRoughness = 0.001
+    const tolerance = 0;
+    f = Math.pow((1 / (-2 * Math.log10((pipeRoughness / diameter) + (9.35 / Reynolds * Math.sqrt(init))))), 2)
+
+    if(f == init) {
+      return f;
+    } else if(f != init ) {
+      init = f;
+    }
   }
   return f;
 }
