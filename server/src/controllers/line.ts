@@ -90,25 +90,32 @@ const calculateReynolds = (liquidDensity: number,
 const calculateMoodyFrictionFactor = (Reynolds: number, diameter: number) => {
 
   let f = 0;
-  if(Reynolds < 2300) {
-    f = (64 / Reynolds);
-  } else if( Reynolds > 4000) {
+  if(Reynolds <= 2300) {
+    f = calculateMoodyLaminarFrictionFactor(Reynolds)
+  } else if( Reynolds > 2300) {
     let init = 0.001;
-    //relative Roughness = e/D, i have to fix this variable
     const pipeRoughness = 0.001
-    const tolerance = 0;
-    f = Math.pow((1 / (-2 * Math.log10((pipeRoughness / diameter) + (9.35 / Reynolds * Math.sqrt(init))))), 2)
+    const tolerance = 0.00000001;
 
-    if(f == init) {
-      return f;
-    } else if(f != init ) {
+    do {
       init = f;
-    }
+      f = calculateMoodyTurbulentFrictionFactor(Reynolds, diameter, pipeRoughness, init);
+    } while (f - init > tolerance)
   }
   return f;
 }
 
+const calculateMoodyLaminarFrictionFactor = (Reynolds: number) => {
+  return (64 / Reynolds)
+};
 
+const calculateMoodyTurbulentFrictionFactor = (Reynolds: number,
+                                               diameter: number,
+                                               pipeRoughness: number,
+                                               init: number) => {
+
+  return Math.pow((1 / (-2 * Math.log10((pipeRoughness / diameter) + (9.35 / Reynolds * Math.sqrt(init))))), 2)
+}
 //END
 export const getlines: RequestHandler = async (req , res, next) => {
   try {
