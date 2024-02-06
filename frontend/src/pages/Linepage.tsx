@@ -20,7 +20,8 @@ const Linepage = () => {
   const [SG, setSG] = useState("0");
   const [liquidDensity, setLiquidDensity] = useState("0");
   const [liquidViscocity, setLiquidViscocity] = useState("0");
-  const [result, setResult] = useState();
+  const [resultVelocity, setResultVelocity] = useState();
+  const [resultPressureDrop, setResultPressureDrop] = useState();
 
   const handleFlowChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     const flowRate = e.target.value;
@@ -80,7 +81,7 @@ const Linepage = () => {
             if (res.status === 200) {
               const resJson = await res.json();
               console.log(resJson);
-              setResult(resJson.liquidVelocity);
+              setResultVelocity(resJson.liquidVelocity);
             } else if (res.status === 400) {
               alert("flow and diameter is required for calculations");
             } else {
@@ -103,7 +104,9 @@ const Linepage = () => {
             if (res.status === 200) {
               const resJson = await res.json();
               console.log(resJson);
-              setResult(resJson.liquidVelocity);
+              setResultVelocity(resJson.liquidVelocity);
+              setResultPressureDrop(resJson.liquidPressureDrop);
+
             } else if (res.status === 400) {
               alert("flow and diameter is required for calculations");
             } else {
@@ -183,7 +186,8 @@ const Linepage = () => {
           <button>submit</button>
       </form>
 
-      <p>velocity: {result} ft/seg</p>
+      <p>velocity: {resultVelocity} ft/seg</p>
+      <p>pressure Drop: {resultPressureDrop} psi/feet</p>
 
       <Row xs={1} md={2} xl={3} className='g-4'>
         {lines.map(line => (

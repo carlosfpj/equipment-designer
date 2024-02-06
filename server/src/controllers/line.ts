@@ -52,9 +52,10 @@ export const singlePhaseLiquidVpParams: RequestHandler<unknown, unknown, LiquidP
     const Re = calculateReynolds(liquidDensity, diameter, liquidVelocity, liquidViscocity);
     const f = calculateMoodyFrictionFactor(Re, diameter);
 
-    const liquidPressureDrop = calculateLiquidPressureDrop(flow, diameter, SG, liquidDensity, liquidViscocity);
+    const liquidPressureDrop = calculateLiquidPressureDrop(flow, diameter, SG, liquidDensity, liquidViscocity, f);
 
     res.status(200).json({
+      liquidVelocity,
       liquidPressureDrop,
     });
   } catch (error) {
@@ -71,7 +72,8 @@ const calculateLiquidPressureDrop = ( flow: number,
                                       diameter: number,
                                       SG: number,
                                       liquidDensity: number,
-                                      liquidViscocity: number) => {
+                                      liquidViscocity: number,
+                                      f: number) => {
 
 
   const DP = ((0.00115 * f) * (flow**2) * SG/ (diameter**5))
