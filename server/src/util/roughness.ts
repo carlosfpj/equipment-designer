@@ -1,4 +1,4 @@
-const pipeRoughnessConstants = [
+const absolutePipeRoughnessConstants = [
   {
     id: 1,
     prop: {
@@ -24,7 +24,8 @@ const pipeRoughnessConstants = [
     prop: {
       material: "Stainless steel, bead blasted",
       feet: {
-        coeff: 0.00000328,
+        MinCoeff: 0.00000328,
+        MaxCoeff: 0.0000197,
       }
     }
   },
@@ -33,7 +34,8 @@ const pipeRoughnessConstants = [
     prop: {
       material: "Stainless steel, turned",
       feet: {
-        coeff: 0.00000131,
+        MinCoeff: 0.00000131,
+        MaxCoeff: 0.0000197,
       }
     }
   },
@@ -42,7 +44,8 @@ const pipeRoughnessConstants = [
     prop: {
       material: "Stainless steel, electron-polished",
       feet: {
-        coeff: 0.000000328,
+        MinCoeff: 0.000000328,
+        MaxCoeff: 0.00000262,
       }
     }
   },
@@ -51,7 +54,8 @@ const pipeRoughnessConstants = [
     prop: {
       material: "Commercial steel or wrought iron",
       feet: {
-        coeff: 0.000148,
+        MinCoeff: 0.000148,
+        MaxCoeff: 0.000295,
       }
     }
   },
@@ -60,7 +64,8 @@ const pipeRoughnessConstants = [
     prop: {
       material: "Stretched steel",
       feet: {
-        coeff: 0.0000495,
+        MinCoeff: 0.0000495,
+        MaxCoeff: 0.0000495,
       }
     }
   },
@@ -69,7 +74,8 @@ const pipeRoughnessConstants = [
     prop: {
       material: "Weld steel",
       feet: {
-        coeff: 0.000148,
+        MinCoeff: 0.000148,
+        MaxCoeff: 0.000148,
       }
     }
   },
@@ -78,7 +84,8 @@ const pipeRoughnessConstants = [
     prop: {
       material: "Galvanized steel",
       feet: {
-        coeff: 0.000492,
+        MinCoeff: 0.000492,
+        MaxCoeff: 0.000492,
       }
     }
   },
@@ -87,7 +94,8 @@ const pipeRoughnessConstants = [
     prop: {
       material: "Rusted steel (corrosion)",
       feet: {
-        coeff: 0.000492,
+        MinCoeff: 0.000492,
+        MaxCoeff: 0.0131,
       }
     }
   },
@@ -96,7 +104,8 @@ const pipeRoughnessConstants = [
     prop: {
       material: "New cast iron",
       feet: {
-        coeff: 0.00082,
+        MinCoeff: 0.00082,
+        MaxCoeff: 0.00262,
       }
     }
   },
@@ -105,7 +114,8 @@ const pipeRoughnessConstants = [
     prop: {
       material: "Worn cast iron",
       feet: {
-        coeff: 0.00262,
+        MinCoeff: 0.00262,
+        MaxCoeff: 0.00492,
       }
     }
   },
@@ -114,7 +124,8 @@ const pipeRoughnessConstants = [
     prop: {
       material: "Rusty cast iron",
       feet: {
-        coeff: 0.00492,
+        MinCoeff: 0.00492,
+        MaxCoeff: 0.0082,
       }
     }
   },
@@ -123,7 +134,8 @@ const pipeRoughnessConstants = [
     prop: {
       material: "Sheet or asphalted cast iron",
       feet: {
-        coeff: 0.0000328,
+        MinCoeff: 0.0000328,
+        MaxCoeff: 0.0000492,
       }
     }
   },
@@ -132,7 +144,8 @@ const pipeRoughnessConstants = [
     prop: {
       material: "Smoothed cement",
       feet: {
-        coeff: 0.00098,
+        MinCoeff: 0.00098,
+        MaxCoeff: 0.00098,
       }
     }
   },
@@ -141,7 +154,8 @@ const pipeRoughnessConstants = [
     prop: {
       material: "Ordinary concrete",
       feet: {
-        coeff: 0.00098,
+        MinCoeff: 0.00098,
+        MaxCoeff: 0.00328,
       }
     }
   },
@@ -150,7 +164,8 @@ const pipeRoughnessConstants = [
     prop: {
       material: "Coarse concrete",
       feet: {
-        coeff: 0.00098,
+        MinCoeff: 0.00098,
+        MaxCoeff: 0.00164,
       }
     }
   },
@@ -159,7 +174,8 @@ const pipeRoughnessConstants = [
     prop: {
       material: "Wood stove",
       feet: {
-        coeff: 0.00059,
+        MinCoeff: 0.00059,
+        MaxCoeff: 0.00295,
       }
     }
   },
@@ -168,7 +184,8 @@ const pipeRoughnessConstants = [
     prop: {
       material: "Well planed wood",
       feet: {
-        coeff: 0.00059,
+        MinCoeff: 0.00059,
+        MaxCoeff: 0.00295,
       }
     }
   },
@@ -177,10 +194,11 @@ const pipeRoughnessConstants = [
     prop: {
       material: "Ordinary wood",
       feet: {
-        coeff: 0.00164,
+        MinCoeff: 0.00164,
+        MaxCoeff: 0.00164,
       }
     }
   },
 ];
 
-export default pipeRoughnessConstants;
+export default absolutePipeRoughnessConstants;

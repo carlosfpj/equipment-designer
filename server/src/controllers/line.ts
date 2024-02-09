@@ -2,7 +2,7 @@ import { RequestHandler } from "express";
 import lineSize from "../models/lineSize";
 import createHttpError from "http-errors";
 import mongoose from "mongoose";
-import pipeRoughnessConstants from "../util/roughness";
+import absolutePipeRoughnessConstants from "../util/roughness";
 
 const ACCEPTED_ORIGINS = [
   'http://localhost:3000/designer/line/singlephase/liquid'
@@ -14,6 +14,7 @@ interface LiquidParams {
   SG?: string,
   liquidDensity?: string,
   liquidViscocity?: string,
+  pipeMaterial?: string,
 }
 
 export const singlePhaseLiquidVelocityParams: RequestHandler<unknown, unknown, LiquidParams, unknown> = async (req, res, next) => {
@@ -30,6 +31,7 @@ export const singlePhaseLiquidVelocityParams: RequestHandler<unknown, unknown, L
 
     res.status(200).json({
       liquidVelocity,
+      absolutePipeRoughnessConstants,
     });
   } catch (error) {
     next(error)
@@ -42,8 +44,9 @@ export const singlePhaseLiquidVpParams: RequestHandler<unknown, unknown, LiquidP
   const SG = Number(req.body.SG);
   const liquidDensity = Number(req.body.liquidDensity);
   const liquidViscocity = Number(req.body.liquidViscocity);
+  const pipeMaterial = Number(req.body.pipeMaterial);
 
-  console.log("los parámetros de VP han llegado al servidor");
+  console.log(pipeMaterial);
 
   try {
     if (!flow || !diameter) {
@@ -119,6 +122,8 @@ const calculateMoodyTurbulentFrictionFactor = (Reynolds: number,
 
   return Math.pow((1 / (-2 * Math.log10((pipeRoughness / diameter) + (9.35 / Reynolds * Math.sqrt(init))))), 2)
 }
+
+
 //END
 export const getlines: RequestHandler = async (req , res, next) => {
   try {
