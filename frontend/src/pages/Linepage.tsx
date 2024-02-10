@@ -22,7 +22,7 @@ const Linepage = () => {
   const [liquidViscocity, setLiquidViscocity] = useState("0");
   const [resultVelocity, setResultVelocity] = useState();
   const [resultPressureDrop, setResultPressureDrop] = useState();
-  const [pipeMaterial, setPipeMaterial] = useState("");
+  const [pipeMaterialID, setPipeMaterialID] = useState("");
 
   const handleFlowChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     const flowRate = e.target.value;
@@ -51,8 +51,8 @@ const Linepage = () => {
 
   const handlePipeMaterialChange: ChangeEventHandler<HTMLSelectElement> = (e) => {
     const selectedMaterial = e.target.value
-    setPipeMaterial(selectedMaterial);
-    console.log(pipeMaterial);
+    setPipeMaterialID(selectedMaterial);
+    console.log(pipeMaterialID);
   }
 
   const handleCalculateOption = (value: number) => {
@@ -71,7 +71,6 @@ const Linepage = () => {
   const handleSubmit = async (e: FormEvent) => {
 
     e.preventDefault();
-    console.log("click en submit");
         try {
           if(!showOption) {
             const res = await fetch("http://localhost:5000/line/singlephase/vel", {
@@ -105,7 +104,7 @@ const Linepage = () => {
                 "SG": SG,
                 "liquidDensity": liquidDensity,
                 "liquidViscocity": liquidViscocity,
-                "pipeMaterial": pipeMaterial,
+                "pipeMaterial": pipeMaterialID,
               }),
             });
             if (res.status === 200) {
@@ -220,7 +219,7 @@ const Linepage = () => {
 
       <p>velocity: {resultVelocity} ft/seg</p>
       <p>pressure Drop: {resultPressureDrop} psi/feet</p>
-      <p>PipeMaterial: {pipeMaterial}</p>
+      <p>PipeMaterial: {pipeMaterialID}</p>
 
       <Row xs={1} md={2} xl={3} className='g-4'>
         {lines.map(line => (
@@ -244,4 +243,3 @@ const Linepage = () => {
 }
 
 export default Linepage;
-
