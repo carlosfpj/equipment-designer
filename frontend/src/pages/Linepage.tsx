@@ -50,9 +50,9 @@ const Linepage = () => {
   }
 
   const handlePipeMaterialChange: ChangeEventHandler<HTMLSelectElement> = (e) => {
-    const selectedMaterial = e.target.value
+    const value = e.target.value;
+    const selectedMaterial = value.toString();
     setPipeMaterialID(selectedMaterial);
-    console.log(pipeMaterialID);
   }
 
   const handleCalculateOption = (value: number) => {
@@ -69,6 +69,7 @@ const Linepage = () => {
   }, [option]);
 
   const handleSubmit = async (e: FormEvent) => {
+    console.log(pipeMaterialID);
 
     e.preventDefault();
         try {
@@ -104,7 +105,7 @@ const Linepage = () => {
                 "SG": SG,
                 "liquidDensity": liquidDensity,
                 "liquidViscocity": liquidViscocity,
-                "pipeMaterial": pipeMaterialID,
+                "pipeMaterialID": pipeMaterialID,
               }),
             });
             if (res.status === 200) {

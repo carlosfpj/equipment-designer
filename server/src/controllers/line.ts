@@ -46,8 +46,13 @@ export const singlePhaseLiquidVpParams: RequestHandler<unknown, unknown, LiquidP
   const liquidViscocity = Number(req.body.liquidViscocity);
   const pipeMaterialID = Number(req.body.pipeMaterialID);
 
-  console.log(flow, diameter, SG, liquidDensity, liquidViscocity, pipeMaterialID);
-
+  console.log(
+    "flujo: " +flow,
+    "diametro: " + diameter,
+    "Specific Gravity: " + SG,
+    "DensidadLiquido: " + liquidDensity,
+    "ViscocidadLiquido: " + liquidViscocity,
+    "materialId: " + pipeMaterialID);
 
   try {
     if (!flow || !diameter) {
@@ -94,6 +99,8 @@ const calculateReynolds = (liquidDensity: number,
 }
 
 const calculateRelativePipeRoughness = (pipeMaterialID: number, diameter: number) => {
+  console.log(pipeMaterialID);
+
   const material = absolutePipeRoughnessConstants.find((element) => element.id === pipeMaterialID);
   const coefficients = material?.prop.feet;
   let averageAbsoluteCoefficient = 0;
