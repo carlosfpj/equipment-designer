@@ -208,18 +208,18 @@ const Linepage = () => {
               <option value="20">20. Ordinary wood</option>
             </select>
             <br/>
-            <label>Liquid Specific Gravity</label>
+            <label>Liquid Specific Gravity [S]</label>
             <input type='text' onChange={handleSGChange} value={SG} /><br />
-            <label>Liquid Density</label>
+            <label>Liquid Density [lb/ft3]</label>
             <input type='text' onChange={handleDensityChange} value={liquidDensity} /><br />
-            <label>Liquid Viscocity</label>
+            <label>Liquid Viscocity [Cp]</label>
             <input type='text' onChange={handleViscocityChange} value={liquidViscocity} /><br />
           </div>}
           <button>submit</button>
       </form>
 
       <p>velocity: {resultVelocity} ft/seg</p>
-      <p>pressure Drop: {resultPressureDrop} psi/feet</p>
+      <p>pressure Drop: {resultPressureDrop} psi/100feet</p>
       <p>PipeMaterial: {pipeMaterialID}</p>
 
       <Row xs={1} md={2} xl={3} className='g-4'>
