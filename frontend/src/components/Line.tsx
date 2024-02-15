@@ -1,6 +1,6 @@
 import { Line as LineModel } from "../models/line";
 import Card from "react-bootstrap/Card";
-import styles from '../styles/Line.module.css';
+import styles from './../assets/styles/Line.module.css';
 import { formatDate } from "../utils/formatDate";
 
 interface LineProps {

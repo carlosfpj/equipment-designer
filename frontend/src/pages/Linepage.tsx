@@ -1,8 +1,8 @@
-import React, { useState, useEffect, FormEvent, ChangeEventHandler, MouseEventHandler } from 'react';
+import React, { useState, useEffect, FormEvent, ChangeEventHandler } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
-import styles from '../styles/LinePage.module.css';
+import styles from '../assets/styles/LinePage.module.css';
 import AddLineDialog from '../components/addLinesDialog';
 import Theory from '../components/Theory';
 import Line from '../components/Line';

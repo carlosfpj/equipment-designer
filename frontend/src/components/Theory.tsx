@@ -1,6 +1,6 @@
-import fig1 from '../images/1.png';
-import fig2 from '../images/2.png';
-import fig3 from '../images/3.png';
+import fig1 from '../assets/images/1.png';
+import fig2 from '../assets/images/2.png';
+import fig3 from '../assets/images/3.png';
 
 const Theory = () => {
   return (

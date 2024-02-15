@@ -1,6 +1,6 @@
 import { Button, Accordion } from "react-bootstrap";
 import { Link, Outlet } from "react-router-dom";
-import styles from "../styles/Designerpage.module.css";
+import styles from "../assets/styles/Designerpage.module.css";
 
 const DesignerPage = () => {
   return (
