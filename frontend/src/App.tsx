@@ -16,12 +16,12 @@ function App() {
         <Routes>
           <Route
             path='/'
-            element={<DashPage/>}
-          />
+            element={<DashPage/>}>
+          </Route>
           <Route
-          path='/blog'
-          element={<Blogpage/>}
-          />
+            path='/blog'
+            element={<Blogpage/>}>
+          </Route>
           <Route
             path='/designer'
             element={<DesignerPage />}>
@@ -31,12 +31,13 @@ function App() {
             </Route>
             <Route
               path='separator'
-              element={<SeparatorPage />} />
+              element={<SeparatorPage />}>
+            </Route>
           </Route>
           <Route
             path='/aboutme'
-            element={<AboutMePage />}
-          />
+            element={<AboutMePage />}>
+          </Route>
         </Routes>
     </BrowserRouter>
   );
