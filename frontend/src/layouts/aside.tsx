@@ -1,47 +1,40 @@
-import { Button, Accordion } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import AsideButton from "../components/AsideButton";
 
 const AsideLayout = ({ styles }: any) => {
+
   return (
     <aside className={styles.aside}>
-    <Accordion flush>
-      <Accordion.Item eventKey="0">
-        <Accordion.Header>Líneas</Accordion.Header>
-        <Accordion.Body className={styles.layoutColumn}>
+      <details>
+        <summary>Pipes</summary>
           <Link to="/designer/line/singlephase/liquid">
-            <Button>Una Fase Líquida</Button>
+            <AsideButton>Single-phase, liquid</AsideButton>
           </Link>
           <Link to="/designer/line/singlephase/gas">
-            <Button>Una Fase gaseosa</Button>
+            <button>Single-phase, gas.</button>
           </Link>
           <Link to="/designer/line/twophase">
-            <Button>Bifásica</Button>
+            <button>Two-phase.</button>
           </Link>
           <Link to="/designer/line/multiphase">
-            <Button>Multifásica</Button>
+            <button>Multi-phase.</button>
           </Link>
-        </Accordion.Body>
-      </Accordion.Item>
-      <Accordion.Item eventKey="1">
-        <Accordion.Header>Separadores</Accordion.Header>
-        <Accordion.Body className={styles.layoutColumn}>
+      </details>
+      <details>
+        <summary>Equipment</summary>
           <Link to="/designer/separator">
-            <Button>Bifásicos</Button>
+            <button>Two-phase Separators</button>
           </Link>
           <Link to="/designer/separator">
-            <Button>Trifásicos</Button>
+            <button>Three-phase Separators</button>
           </Link>
-        </Accordion.Body>
-      </Accordion.Item>
-      <div className={styles.layoutColumn}>
+      </details>
         <Link to="/designer/scrubber">
           <button>Scrubber</button>
         </Link>
         <Link to="/designer/kod">
-          <button>KO-Drum</button>
+            <button>KO-Drum</button>
         </Link>
-      </div>
-    </Accordion>
     </aside>
   )
 }
