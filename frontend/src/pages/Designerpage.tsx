@@ -1,5 +1,5 @@
 import {Outlet} from "react-router-dom";
-import AsideLayout from "../layouts/aside";
+import AsideLayout from "../layouts/aside/aside";
 import styles from "../assets/styles/Designerpage.module.css";
 
 const DesignerPage = () => {
