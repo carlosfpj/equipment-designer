@@ -6,8 +6,10 @@ import DesignerPage from './pages/Designerpage';
 import Blogpage from './pages/Blogpage';
 import AboutMePage from './pages/AboutMePage';
 import NavigationBar from './components/Navbar/NavBar';
-import Linepage from './pages/Linepage';
+import PipeLiquid from './pages/PipeLiquid';
 import SeparatorPage from './pages/SeparatorPage';
+import PipeGas from './pages/PipeGas';
+import OnConstruction from './pages/OnConstruction';
 
 function App() {
   return (
@@ -16,27 +18,51 @@ function App() {
         <Routes>
           <Route
             path='/'
-            element={<DashPage/>}>
+            element={<OnConstruction/>}>
           </Route>
           <Route
             path='/blog'
-            element={<Blogpage/>}>
+            element={<OnConstruction/>}>
           </Route>
           <Route
             path='/designer'
             element={<DesignerPage />}>
             <Route
-              path='line/singlephase/liquid'
-              element={<Linepage/>}>
+              path='pipes/singlephase/liquid'
+              element={<PipeLiquid/>}>
             </Route>
             <Route
-              path='separator'
-              element={<SeparatorPage />}>
+              path='pipes/singlephase/gas'
+              element={<OnConstruction />}>
+            </Route>
+            <Route
+              path='pipes/twophase'
+              element={<OnConstruction />}>
+            </Route>
+            <Route
+              path='pipes/multiphase'
+              element={<OnConstruction />}>
+            </Route>
+            <Route
+              path='equipment/separator/twophase'
+              element={<OnConstruction />}>
+            </Route>
+            <Route
+              path='equipment/separator/threephase'
+              element={<OnConstruction />}>
+            </Route>
+            <Route
+              path='equipment/scrubber'
+              element={<OnConstruction />}>
+            </Route>
+            <Route
+              path='equipment/kod'
+              element={<OnConstruction />}>
             </Route>
           </Route>
           <Route
             path='/aboutme'
-            element={<AboutMePage />}>
+            element={<OnConstruction />}>
           </Route>
         </Routes>
     </BrowserRouter>

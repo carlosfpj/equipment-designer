@@ -10,7 +10,7 @@ import { Container } from 'react-bootstrap';
 import * as LinesApi from '../network/line_api';
 import { Line as LineModel } from '../models/line';
 
-const Linepage = () => {
+const PipeLiquid = () => {
   const [lines, setLines] = useState<LineModel[]>([]);
   const [showAddLineDialog, setShowAddLineDialog] = useState(false);
   const [option, setOption] = useState(0);
@@ -243,4 +243,4 @@ const Linepage = () => {
   )
 }
 
-export default Linepage;
+export default PipeLiquid;
