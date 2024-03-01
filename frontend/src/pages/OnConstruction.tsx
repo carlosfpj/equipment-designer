@@ -1,6 +1,10 @@
-const OnConstruction = () => {
+interface onConstructionProps {
+  page: string;
+}
+
+const OnConstruction = ({page}:onConstructionProps):React.JSX.Element => {
   return (
-    <h1>On Construction</h1>
+    <h1>{page} On Construction</h1>
   )
 }
 

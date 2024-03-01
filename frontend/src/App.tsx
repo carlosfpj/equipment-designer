@@ -18,11 +18,11 @@ function App() {
         <Routes>
           <Route
             path='/'
-            element={<OnConstruction/>}>
+            element={<OnConstruction page={"home"}/>}>
           </Route>
           <Route
             path='/blog'
-            element={<OnConstruction/>}>
+            element={<OnConstruction page={"blog"}/>}>
           </Route>
           <Route
             path='/designer'
@@ -33,36 +33,36 @@ function App() {
             </Route>
             <Route
               path='pipes/singlephase/gas'
-              element={<OnConstruction />}>
+              element={<OnConstruction page={"pipes single phase gas"} />}>
             </Route>
             <Route
               path='pipes/twophase'
-              element={<OnConstruction />}>
+              element={<OnConstruction page={"pipes two phase"} />}>
             </Route>
             <Route
               path='pipes/multiphase'
-              element={<OnConstruction />}>
+              element={<OnConstruction page={"pipes multiphase"} />}>
             </Route>
             <Route
               path='equipment/separator/twophase'
-              element={<OnConstruction />}>
+              element={<OnConstruction page={"separator two phase"} />}>
             </Route>
             <Route
               path='equipment/separator/threephase'
-              element={<OnConstruction />}>
+              element={<OnConstruction page={"separator three phase"} />}>
             </Route>
             <Route
               path='equipment/scrubber'
-              element={<OnConstruction />}>
+              element={<OnConstruction page={"scrubber"} />}>
             </Route>
             <Route
               path='equipment/kod'
-              element={<OnConstruction />}>
+              element={<OnConstruction page={"KOD"} />}>
             </Route>
           </Route>
           <Route
             path='/aboutme'
-            element={<OnConstruction />}>
+            element={<OnConstruction page={"about me"} />}>
           </Route>
         </Routes>
     </BrowserRouter>
