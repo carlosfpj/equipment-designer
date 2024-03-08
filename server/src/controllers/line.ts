@@ -30,7 +30,7 @@ export const singlePhaseLiquidVelocityParams: RequestHandler<unknown, unknown, L
     const liquidVelocity:string = calculateLiquidVelocity(flow, diameter).toString();
 
     res.status(200).json({
-      "liquidVelocity": liquidVelocity,
+      liquidVelocity,
     });
   } catch (error) {
     next(error)
