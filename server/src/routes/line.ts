@@ -9,12 +9,12 @@ import { singlePhaseLiquidVelocityParams,
 
 const router = express.Router();
 
-router.get("/", getlines );
-router.get("/images", getImages);
-router.get("/:lineId", getline);
+// router.get("/", getlines );
+// router.get("/images", getImages);
+// router.get("/:lineId", getline);
 router.post("/vel", singlePhaseLiquidVelocityParams);
 router.post("/vp", singlePhaseLiquidVpParams);
-router.patch("/:lineId", updateLine);
-router.delete("/:lineId", deleteLine);
+// router.patch("/:lineId", updateLine);
+// router.delete("/:lineId", deleteLine);
 
 export default router;
