@@ -27,7 +27,7 @@ export const singlePhaseLiquidVelocityParams: RequestHandler<unknown, unknown, L
     if (!flow || !diameter) {
       throw createHttpError(400, "Liquid Velocity Must have flow and diameter");
     }
-    const liquidVelocity:string = calculateLiquidVelocity(flow, diameter).toString();
+    const liquidVelocity:string = await calculateLiquidVelocity(flow, diameter).toString();
     console.log(liquidVelocity);
 
     res.status(200).json({
@@ -75,7 +75,7 @@ export const singlePhaseLiquidVpParams: RequestHandler<unknown, unknown, LiquidP
   }
 };
 
-const calculateLiquidVelocity = (flow: number, diameter: number) => {
+const calculateLiquidVelocity = async (flow: number, diameter: number) => {
   const calculated_Velocity = ((0.012 * flow) / (diameter ** 2));
   return calculated_Velocity;
 }
