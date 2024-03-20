@@ -59,7 +59,7 @@ export const singlePhaseLiquidVpParams: RequestHandler<unknown, unknown, LiquidP
     if (!flow || !diameter) {
       throw createHttpError(400, "Liquid Velocity Must have flow and diameter");
     }
-    const liquidVelocity = Number(calculateLiquidVelocity(flow, diameter).toFixed(1));
+    const liquidVelocity = Number(calculateLiquidVelocity(flow, diameter));
     const Re = calculateReynolds(liquidDensity, diameterFeet, liquidVelocity, liquidViscocity);
     const pipeRelativeRoughness = calculateRelativePipeRoughness(pipeMaterialID, diameter);
     const f = calculateMoodyFrictionFactor(Re, diameter, pipeRelativeRoughness);
