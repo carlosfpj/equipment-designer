@@ -31,7 +31,7 @@ export const singlePhaseLiquidVelocityParams: RequestHandler<unknown, unknown, L
     console.log(liquidVelocity);
 
     res.status(200).json({
-      liquidVelocity,
+      liqVel: liquidVelocity,
     });
   } catch (error) {
     next(error)
