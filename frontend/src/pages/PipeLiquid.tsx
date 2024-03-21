@@ -85,7 +85,6 @@ const PipeLiquid = () => {
               }),
             });
             if (res.status === 200) {
-              console.log(res.json());
               const resJson = await res.json();
               console.log(resJson);
               setResultVelocity(resJson.liquidVelocity);
