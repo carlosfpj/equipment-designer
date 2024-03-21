@@ -85,8 +85,7 @@ const PipeLiquid = () => {
               }),
             });
             if (res.status === 200) {
-              const resJson = await res.text();
-              console.log(resJson);
+              const resJson = await res.json();
               setResultVelocity(resJson.liquidVelocity);
             } else if (res.status === 400) {
               alert("flow and diameter is required for calculations");
