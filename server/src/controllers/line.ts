@@ -18,6 +18,8 @@ interface LiquidParams {
 }
 
 export const singlePhaseLiquidVelocityParams: RequestHandler<unknown, unknown, LiquidParams, unknown> = async (req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*')
+
   const flow = Number(req.body.flow);
   const diameter = Number(req.body.diameter);
 
