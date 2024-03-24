@@ -69,8 +69,6 @@ const PipeLiquid = () => {
   }, [option]);
 
   const handleSubmit = async (e: FormEvent) => {
-    console.log(pipeMaterialID);
-    //urls
     e.preventDefault();
         try {
           if(!showOption) {
@@ -87,6 +85,7 @@ const PipeLiquid = () => {
             });
             if (res.status === 200) {
               const resJson = await res.json();
+              console.log("aqui la respuesta res.json(): " + resJson);
               setResultVelocity(resJson.liquidVelocity);
             } else if (res.status === 400) {
               alert("flow and diameter is required for calculations");
