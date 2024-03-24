@@ -31,7 +31,6 @@ export const singlePhaseLiquidVelocityParams: RequestHandler<unknown, unknown, L
 
     res.status(200).json({
       liquidVelocity,
-      absolutePipeRoughnessConstants,
     });
   } catch (error) {
     next(error)
