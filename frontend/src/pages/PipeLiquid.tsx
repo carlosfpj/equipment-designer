@@ -76,7 +76,7 @@ const PipeLiquid = () => {
               method: "POST",
               headers: {
                 "Content-Type": 'application/json',
-                "Accept": "application/json"
+                "Accept": "application/json",
               },
               body: JSON.stringify({
                 "flow": flowRate,
@@ -85,7 +85,6 @@ const PipeLiquid = () => {
             });
             if (res.status === 200) {
               const resJson = await res.json();
-              console.log("aqui la respuesta res.text(): " + resJson);
               setResultVelocity(resJson);
             } else if (res.status === 400) {
               alert("flow and diameter is required for calculations");
