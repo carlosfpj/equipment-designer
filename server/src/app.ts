@@ -2,12 +2,14 @@ import "dotenv/config";
 import express, { NextFunction, Request, Response } from 'express';
 import createHttpError, {isHttpError} from "http-errors";
 import cors from 'cors';
+import homeRouter from "./routes/homerouter";
 import router from "./routes/line";
 
 const app = express();
 
 app.use(express.json());
 app.use(cors());
+app.use("/", homeRouter);
 app.use("https://equipment-designer-api.onrender.com/", router );
 
 app.use((req, res, next) => {
