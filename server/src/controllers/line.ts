@@ -144,7 +144,11 @@ const calculateMoodyTurbulentFrictionFactor = (Reynolds: number,
                                                init: number) => {
 
   return 0.0055 * Math.pow((1+((20000 * pipeRoughness)+ (1000000/Reynolds))), 1/3)
-}
+};
+
+export const test:RequestHandler = async(req,res,next) => {
+  res.send("POST TEST RESPONSE");
+};
 
 //*-*-*-*-*-*-*END-*-*-*-*-*-*-*-*-//
 export const getlines: RequestHandler = async (req , res, next) => {
