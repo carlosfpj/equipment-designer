@@ -74,7 +74,6 @@ const PipeLiquid = () => {
     e.preventDefault();
         try {
           if(!showOption) {
-            //watch this url
             const res = await fetch("http://localhost:5000/line/singlephase/vel", {
               method: "POST",
               headers: {
