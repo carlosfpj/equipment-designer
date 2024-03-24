@@ -84,6 +84,7 @@ const PipeLiquid = () => {
               }),
             });
             if (res.status === 200) {
+              console.log(res);
               const resJson = await res.json();
               setResultVelocity(resJson);
             } else if (res.status === 400) {
@@ -123,18 +124,18 @@ const PipeLiquid = () => {
       }
   }
 
-  useEffect(() => {
-    async function loadNotes() {
-      try {
-        const lines = await LinesApi.fetchLines();
-        setLines(lines);
-      } catch (error) {
-        console.error(error);
-        alert(error);
-      }
-    }
-    loadNotes();
-  }, []);
+  // useEffect(() => {
+  //   async function loadNotes() {
+  //     try {
+  //       const lines = await LinesApi.fetchLines();
+  //       setLines(lines);
+  //     } catch (error) {
+  //       console.error(error);
+  //       alert(error);
+  //     }
+  //   }
+  //   loadNotes();
+  // }, []);
 
   return (
     <Container>
