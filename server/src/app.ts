@@ -10,6 +10,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use("/", homeRouter);
+app.use("/line", homeRouter);
 app.use("https://equipment-designer-api.onrender.com/", router );
 
 app.use((req, res, next) => {
