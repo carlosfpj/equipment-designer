@@ -79,8 +79,8 @@ const PipeLiquid = () => {
                 "Accept": "application/json",
               },
               body: JSON.stringify({
-                "flow": flowRate,
-                "diameter": pipeDiameter,
+                flow: flowRate,
+                diameter: pipeDiameter,
               }),
             });
               const resJson = await res.json();
