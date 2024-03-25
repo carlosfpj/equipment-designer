@@ -83,17 +83,10 @@ const PipeLiquid = () => {
                 "diameter": pipeDiameter,
               }),
             });
-            if (res.status === 200) {
-              console.log(res);
               const resJson = await res.json();
               // const resText = await res.text();
               console.log(resJson.vel);
               setResultVelocity(resJson.vel);
-            } else if (res.status === 400) {
-              alert("flow and diameter is required for calculations");
-            } else {
-              console.log("an error has ocurred");
-            }
           } else {
             const res = await fetch("/line/singlephase/vp", {
               method: "POST",
