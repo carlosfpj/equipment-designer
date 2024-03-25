@@ -31,7 +31,7 @@ export const singlePhaseLiquidVelocityParams: RequestHandler<unknown, unknown, L
     }
     const n_liquidVelocity:number = await calculateLiquidVelocity(flow, diameter);
     const s_liquidVelocity: string = n_liquidVelocity.toString()
-    res.status(200).json({vel: s_liquidVelocity});
+    res.status(200).send(s_liquidVelocity);
   } catch (error) {
     next(error)
   }
