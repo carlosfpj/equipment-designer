@@ -11,7 +11,6 @@ app.use(express.json());
 app.use(cors());
 app.use("/", homeRouter);
 app.use("/line/singlephase", router);
-//app.use("https://equipment-designer-api.onrender.com/", router );
 
 app.use((req, res, next) => {
   const error = createHttpError(404, "url not found in equipment designer");
