@@ -70,59 +70,59 @@ const PipeLiquid = () => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-        try {
-          if(!showOption) {
-            const res = await fetch("/line/singlephase/vel", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json",
-              },
-              body: JSON.stringify({
-                "flow": flowRate,
-                "diameter": pipeDiameter,
-              }),
-            });
-            if(res.status === 200) {
-              const resJson = await res.json();
-              // const resText = await res.text();
-              console.log(resJson.vel);
-              setResultVelocity(resJson.vel);
-            } else if (res.status === 400) {
-              alert("flow and diameter is required for calculations");
-            } else {
-              console.log("an error has ocurred");
-            }
-          } else {
-            const res = await fetch("/line/singlephase/vp", {
-              method: "POST",
-              headers: {
-                "Content-Type": 'application/json',
-              },
-              body: JSON.stringify({
-                "flow": flowRate,
-                "diameter": pipeDiameter,
-                "SG": SG,
-                "liquidDensity": liquidDensity,
-                "liquidViscocity": liquidViscocity,
-                "pipeMaterialID": pipeMaterialID,
-              }),
-            });
-            if (res.status === 200) {
-              const resJson = await res.json();
-              console.log(resJson);
-              setResultVelocity(resJson.liquidVelocity);
-              setResultPressureDrop(resJson.liquidPressureDrop);
+    try {
+      if(!showOption) {
+        const res = await fetch("/line/singlephase/vel", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+          },
+          body: JSON.stringify({
+            "flow": flowRate,
+            "diameter": pipeDiameter,
+          }),
+        });
+        if(res.status === 200) {
+          const resJson = await res.json(JSON.parse(JSON.stringify(resJson)));
+          // const resText = await res.text();
+          console.log(JSON.parse(JSON.stringify(resJson)));
+          setResultVelocity(resJson.vel);
+        } else if (res.status === 400) {
+          alert("flow and diameter is required for calculations");
+        } else {
+          console.log("an error has ocurred");
+        }
+      } else {
+        const res = await fetch("/line/singlephase/vp", {
+          method: "POST",
+          headers: {
+            "Content-Type": 'application/json',
+          },
+          body: JSON.stringify({
+            "flow": flowRate,
+            "diameter": pipeDiameter,
+            "SG": SG,
+            "liquidDensity": liquidDensity,
+            "liquidViscocity": liquidViscocity,
+            "pipeMaterialID": pipeMaterialID,
+          }),
+        });
+        if (res.status === 200) {
+          const resJson = await res.json();
+          console.log(resJson);
+          setResultVelocity(resJson.liquidVelocity);
+          setResultPressureDrop(resJson.liquidPressureDrop);
 
-            } else if (res.status === 400) {
-              alert("flow and diameter is required for calculations");
-            } else {
-              console.log("an error has ocurred");
-            }
-          }
-      } catch (error) {
-        console.log(error);
+        } else if (res.status === 400) {
+          alert("flow and diameter is required for calculations");
+        } else {
+          console.log("an error has ocurred");
+        }
       }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   // useEffect(() => {
