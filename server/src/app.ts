@@ -10,7 +10,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use("/", homeRouter);
-app.use("/line/singlephase", router);
+app.use("/designer/pipes/singlephase/liquid", router);
 
 app.use((req, res, next) => {
   const error = createHttpError(404, "url not found in equipment designer");
