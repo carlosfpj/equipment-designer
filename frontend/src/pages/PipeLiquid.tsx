@@ -72,7 +72,7 @@ const PipeLiquid = () => {
     e.preventDefault();
     try {
       if(!showOption) {
-        const res = await fetch("/designer/pipes/singlephase/liquid/vel", {
+        const res = await fetch("https://equipment-designer-api.onrender.com/designer/pipes/singlephase/liquid/vel", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
