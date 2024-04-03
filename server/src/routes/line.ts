@@ -5,7 +5,6 @@ import { singlePhaseLiquidVelocityParams,
          getline,
          getlines,
          updateLine,
-         test,
          getImages } from '../controllers/line';
 
 const router = express.Router();
