@@ -11,7 +11,7 @@ import { singlePhaseLiquidVelocityParams,
 const router = express.Router();
 
 router.get("/", getlines );
-router.post("/", test);
+// router.post("/", test);
 // router.get("/images", getImages);
 // router.get("/:lineId", getline);
 router.post("/vel", singlePhaseLiquidVelocityParams);
