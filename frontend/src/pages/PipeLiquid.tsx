@@ -94,7 +94,7 @@ const PipeLiquid = () => {
           console.log("an error has ocurred");
         }
       } else {
-        const res = await fetch("https://equipment-designer-api.onrender.com/designer/pipes/singlephase/liquid/vel", {
+        const res = await fetch("https://equipment-designer-api.onrender.com/designer/pipes/singlephase/liquid/vp", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
