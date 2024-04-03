@@ -121,13 +121,13 @@ const calculateMoodyFrictionFactor = async (Reynolds: number, diameter: number, 
 
   let f = 0;
   if(Reynolds <= 2300) {
-    f = calculateMoodyLaminarFrictionFactor(Reynolds)
+    f = await calculateMoodyLaminarFrictionFactor(Reynolds)
   } else if( Reynolds > 2300) {
     let init = 0.001;
     const tolerance = 0.00000001;
     do {
       init = f;
-      f = calculateMoodyTurbulentFrictionFactor(Reynolds, diameter, pipeRelativeRoughness, init);
+      f = await calculateMoodyTurbulentFrictionFactor(Reynolds, diameter, pipeRelativeRoughness, init);
     } while (f - init > tolerance)
   }
   console.log("f es: " + f);
