@@ -29,10 +29,9 @@ export const singlePhaseLiquidVelocityParams: RequestHandler<unknown, unknown, L
     if (!flow || !diameter) {
       throw createHttpError(400, "Liquid Velocity Must have flow and diameter");
     }
-    const n_liquidVelocity:number = await calculateLiquidVelocity(flow, diameter);
-    // const s_liquidVelocity:string = n_liquidVelocity.toString();
-    console.log(n_liquidVelocity);
-    res.status(200).json(n_liquidVelocity);
+    const liquidVelocity:number = await calculateLiquidVelocity(flow, diameter);
+    console.log(liquidVelocity);
+    res.status(200).json(liquidVelocity);
   } catch (error) {
     next(error)
   }

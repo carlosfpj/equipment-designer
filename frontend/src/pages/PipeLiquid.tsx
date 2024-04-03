@@ -86,7 +86,6 @@ const PipeLiquid = () => {
         if(res.status === 200) {
           const data = console.log(res);
           const resJson = await res.json();
-          // const resText = await res.text();
           console.log(JSON.parse(JSON.stringify(resJson)));
           setResultVelocity(resJson);
         } else if (res.status === 400) {
@@ -95,10 +94,11 @@ const PipeLiquid = () => {
           console.log("an error has ocurred");
         }
       } else {
-        const res = await fetch("/designer/pipes/singlephase/liquid/vel", {
+        const res = await fetch("https://equipment-designer-api.onrender.com/designer/pipes/singlephase/liquid/vel", {
           method: "POST",
           headers: {
-            "Content-Type": 'application/json',
+            "Content-Type": "application/json",
+            "Accept": "application/json",
           },
           body: JSON.stringify({
             "flow": flowRate,
