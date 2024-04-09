@@ -8,10 +8,15 @@
 
 .navbar {
   background-color: rgb(23 23 23);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
 }
 
 .navbar ul {
   display: flex;
+  flex-direction: column;
   justify-content: start;
   gap: 15px;
   padding: 1em;

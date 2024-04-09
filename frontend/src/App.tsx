@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import {Routes} from 'react-router-dom';
-import DashPage from './pages/Dashpage';
+import Homepage from './pages/Homepage';
 import DesignerPage from './pages/Designerpage';
 import Blogpage from './pages/Blogpage';
 import AboutMePage from './pages/AboutMePage';
@@ -10,26 +10,27 @@ import PipeLiquid from './pages/PipeLiquid';
 import SeparatorPage from './pages/SeparatorPage';
 import PipeGas from './pages/PipeGas';
 import OnConstruction from './pages/OnConstruction';
+import styles from "./assets/styles/Designerpage.module.css";
 
 function App() {
   return (
     <BrowserRouter>
-      <NavigationBar/>
+        <NavigationBar />
         <Routes>
           <Route
             path='/'
-            element={<OnConstruction page={"home"}/>}>
+            element={<Homepage />}>
           </Route>
           <Route
             path='/blog'
-            element={<OnConstruction page={"blog"}/>}>
+            element={<OnConstruction page={"blog"} />}>
           </Route>
           <Route
             path='/designer'
             element={<DesignerPage />}>
             <Route
               path='pipes/singlephase/liquid'
-              element={<PipeLiquid/>}>
+              element={<PipeLiquid />}>
             </Route>
             <Route
               path='pipes/singlephase/gas'
