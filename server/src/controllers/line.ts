@@ -134,7 +134,6 @@ const calculateMoodyFrictionFactor = async (Reynolds: number, diameter: number, 
   return f;
 }
 
-
 const calculateMoodyLaminarFrictionFactor = async (Reynolds: number) => {
   return (64 / Reynolds)
 };
