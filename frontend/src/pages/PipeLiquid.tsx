@@ -24,6 +24,9 @@ const PipeLiquid = () => {
   const [resultPressureDrop, setResultPressureDrop] = useState();
   const [pipeMaterialID, setPipeMaterialID] = useState("");
 
+  const BASE_URL_BACK_DEV = "http://localhost:5000";
+  const BASE_URL_BACK_PROD = "https://equipment-designer-api.onrender.com";
+
   const handleFlowChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     const flowRate = e.target.value;
     setFlowRate(flowRate);
@@ -72,7 +75,7 @@ const PipeLiquid = () => {
     e.preventDefault();
     try {
       if(!showOption) {
-        const res = await fetch("https://equipment-designer-api.onrender.com/designer/pipes/singlephase/liquid/vel", {
+        const res = await fetch(`${BASE_URL_BACK_DEV}/designer/pipes/singlephase/liquid/vel`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -94,7 +97,7 @@ const PipeLiquid = () => {
           console.log("an error has ocurred");
         }
       } else {
-        const res = await fetch("https://equipment-designer-api.onrender.com/designer/pipes/singlephase/liquid/vp", {
+        const res = await fetch(`${BASE_URL_BACK_DEV}/designer/pipes/singlephase/liquid/vp`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
