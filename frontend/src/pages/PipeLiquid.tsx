@@ -20,7 +20,7 @@ const PipeLiquid = () => {
   const [SG, setSG] = useState("0");
   const [liquidDensity, setLiquidDensity] = useState("0");
   const [liquidViscocity, setLiquidViscocity] = useState("0");
-  const [resultVelocity, setResultVelocity] = useState();
+  const [resultVelocity, setResultVelocity] = useState("");
   const [resultPressureDrop, setResultPressureDrop] = useState();
   const [pipeMaterialID, setPipeMaterialID] = useState("");
 
@@ -69,74 +69,75 @@ const PipeLiquid = () => {
   }, [option]);
 
   const handleSubmit = async (e: FormEvent) => {
-    console.log(pipeMaterialID);
-
     e.preventDefault();
-        try {
-          if(!showOption) {
-            const res = await fetch("http://localhost:5000/line/singlephase/vel", {
-              method: "POST",
-              headers: {
-                "Content-Type": 'application/json',
-              },
-              body: JSON.stringify({
-                "flow": flowRate,
-                "diameter": pipeDiameter,
-              }),
-            });
-            if (res.status === 200) {
-              const resJson = await res.json();
-              console.log(resJson);
-              setResultVelocity(resJson.liquidVelocity);
-            } else if (res.status === 400) {
-              alert("flow and diameter is required for calculations");
-            } else {
-              console.log("an error has ocurred");
-            }
-          } else {
-            const res = await fetch("http://localhost:5000/line/singlephase/vp", {
-              method: "POST",
-              headers: {
-                "Content-Type": 'application/json',
-              },
-              body: JSON.stringify({
-                "flow": flowRate,
-                "diameter": pipeDiameter,
-                "SG": SG,
-                "liquidDensity": liquidDensity,
-                "liquidViscocity": liquidViscocity,
-                "pipeMaterialID": pipeMaterialID,
-              }),
-            });
-            if (res.status === 200) {
-              const resJson = await res.json();
-              console.log(resJson);
-              setResultVelocity(resJson.liquidVelocity);
-              setResultPressureDrop(resJson.liquidPressureDrop);
+    try {
+      if(!showOption) {
+        const res = await fetch("https://equipment-designer-api.onrender.com/designer/pipes/singlephase/liquid/vel", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+          },
+          body: JSON.stringify({
+            "flow": flowRate,
+            "diameter": pipeDiameter,
+          }),
+        });
+        if(res.status === 200) {
+          const data = console.log(res);
+          const resJson = await res.json();
+          console.log(JSON.parse(JSON.stringify(resJson)));
+          setResultVelocity(resJson);
+        } else if (res.status === 400) {
+          alert("flow and diameter is required for calculations");
+        } else {
+          console.log("an error has ocurred");
+        }
+      } else {
+        const res = await fetch("https://equipment-designer-api.onrender.com/designer/pipes/singlephase/liquid/vp", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+          },
+          body: JSON.stringify({
+            "flow": flowRate,
+            "diameter": pipeDiameter,
+            "SG": SG,
+            "liquidDensity": liquidDensity,
+            "liquidViscocity": liquidViscocity,
+            "pipeMaterialID": pipeMaterialID,
+          }),
+        });
+        if (res.status === 200) {
+          const resJson = await res.json();
+          console.log(resJson);
+          setResultVelocity(resJson.liquidVelocity);
+          setResultPressureDrop(resJson.liquidPressureDrop);
 
-            } else if (res.status === 400) {
-              alert("flow and diameter is required for calculations");
-            } else {
-              console.log("an error has ocurred");
-            }
-          }
-      } catch (error) {
-        console.log(error);
+        } else if (res.status === 400) {
+          alert("flow and diameter is required for calculations");
+        } else {
+          console.log("an error has ocurred");
+        }
       }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
-  useEffect(() => {
-    async function loadNotes() {
-      try {
-        const lines = await LinesApi.fetchLines();
-        setLines(lines);
-      } catch (error) {
-        console.error(error);
-        alert(error);
-      }
-    }
-    loadNotes();
-  }, []);
+  // useEffect(() => {
+  //   async function loadNotes() {
+  //     try {
+  //       const lines = await LinesApi.fetchLines();
+  //       setLines(lines);
+  //     } catch (error) {
+  //       console.error(error);
+  //       alert(error);
+  //     }
+  //   }
+  //   loadNotes();
+  // }, []);
 
   return (
     <Container>

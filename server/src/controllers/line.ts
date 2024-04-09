@@ -18,6 +18,8 @@ interface LiquidParams {
 }
 
 export const singlePhaseLiquidVelocityParams: RequestHandler<unknown, unknown, LiquidParams, unknown> = async (req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+
   const flow = Number(req.body.flow);
   const diameter = Number(req.body.diameter);
 
@@ -27,11 +29,9 @@ export const singlePhaseLiquidVelocityParams: RequestHandler<unknown, unknown, L
     if (!flow || !diameter) {
       throw createHttpError(400, "Liquid Velocity Must have flow and diameter");
     }
-    const liquidVelocity = calculateLiquidVelocity(flow, diameter);
-
-    res.status(200).json({
-      liquidVelocity,
-    });
+    const liquidVelocity:number = await calculateLiquidVelocity(flow, diameter);
+    console.log(liquidVelocity);
+    res.status(200).json(liquidVelocity);
   } catch (error) {
     next(error)
   }
@@ -47,7 +47,7 @@ export const singlePhaseLiquidVpParams: RequestHandler<unknown, unknown, LiquidP
   const diameterFeet = (diameter / 12);
 
   console.log(
-    "flujo: " +flow,
+    "flujo: " + flow,
     "diametro: " + diameter,
     "Specific Gravity: " + SG,
     "DensidadLiquido: " + liquidDensity,
@@ -58,11 +58,11 @@ export const singlePhaseLiquidVpParams: RequestHandler<unknown, unknown, LiquidP
     if (!flow || !diameter) {
       throw createHttpError(400, "Liquid Velocity Must have flow and diameter");
     }
-    const liquidVelocity = Number(calculateLiquidVelocity(flow, diameter).toFixed(1));
-    const Re = calculateReynolds(liquidDensity, diameterFeet, liquidVelocity, liquidViscocity);
-    const pipeRelativeRoughness = calculateRelativePipeRoughness(pipeMaterialID, diameter);
-    const f = calculateMoodyFrictionFactor(Re, diameter, pipeRelativeRoughness);
-    const liquidPressureDrop = calculateLiquidPressureDrop(flow, diameter, SG, f);
+    const liquidVelocity = Number(await calculateLiquidVelocity(flow, diameter));
+    const Re = await calculateReynolds(liquidDensity, diameterFeet, liquidVelocity, liquidViscocity);
+    const pipeRelativeRoughness = await calculateRelativePipeRoughness(pipeMaterialID, diameter);
+    const f = await calculateMoodyFrictionFactor(Re, diameter, pipeRelativeRoughness);
+    const liquidPressureDrop = await calculateLiquidPressureDrop(flow, diameter, SG, f);
 
     console.log("PD es: " + liquidPressureDrop);
     res.status(200).json({
@@ -74,12 +74,12 @@ export const singlePhaseLiquidVpParams: RequestHandler<unknown, unknown, LiquidP
   }
 };
 
-const calculateLiquidVelocity = (flow: number, diameter: number) => {
+const calculateLiquidVelocity = async (flow: number, diameter: number) => {
   const calculated_Velocity = ((0.012 * flow) / (diameter ** 2));
   return calculated_Velocity;
 }
 
-const calculateLiquidPressureDrop = ( flow: number,
+const calculateLiquidPressureDrop = async ( flow: number,
                                       diameter: number,
                                       SG: number,
                                       f: number) => {
@@ -88,7 +88,7 @@ const calculateLiquidPressureDrop = ( flow: number,
   return DP;
 }
 
-const calculateReynolds = (liquidDensity: number,
+const calculateReynolds = async (liquidDensity: number,
                            diameterFeet: number,
                            liquidVelocity: number ,
                            liquidViscocity: number) => {
@@ -101,7 +101,7 @@ const calculateReynolds = (liquidDensity: number,
   return Re;
 }
 
-const calculateRelativePipeRoughness = (pipeMaterialID: number, diameter: number) => {
+const calculateRelativePipeRoughness = async (pipeMaterialID: number, diameter: number) => {
 
   const material = absolutePipeRoughnessConstants.find((element) => element.id === pipeMaterialID);
   const coefficients = material?.prop.feet;
@@ -117,35 +117,34 @@ const calculateRelativePipeRoughness = (pipeMaterialID: number, diameter: number
   return pipeRelativeRoughness;
 }
 
-const calculateMoodyFrictionFactor = (Reynolds: number, diameter: number, pipeRelativeRoughness: number) => {
+const calculateMoodyFrictionFactor = async (Reynolds: number, diameter: number, pipeRelativeRoughness: number) => {
 
   let f = 0;
   if(Reynolds <= 2300) {
-    f = calculateMoodyLaminarFrictionFactor(Reynolds)
+    f = await calculateMoodyLaminarFrictionFactor(Reynolds)
   } else if( Reynolds > 2300) {
     let init = 0.001;
     const tolerance = 0.00000001;
     do {
       init = f;
-      f = calculateMoodyTurbulentFrictionFactor(Reynolds, diameter, pipeRelativeRoughness, init);
+      f = await calculateMoodyTurbulentFrictionFactor(Reynolds, diameter, pipeRelativeRoughness, init);
     } while (f - init > tolerance)
   }
   console.log("f es: " + f);
   return f;
 }
 
-
-const calculateMoodyLaminarFrictionFactor = (Reynolds: number) => {
+const calculateMoodyLaminarFrictionFactor = async (Reynolds: number) => {
   return (64 / Reynolds)
 };
 
-const calculateMoodyTurbulentFrictionFactor = (Reynolds: number,
+const calculateMoodyTurbulentFrictionFactor = async (Reynolds: number,
                                                diameter: number,
                                                pipeRoughness: number,
                                                init: number) => {
 
   return 0.0055 * Math.pow((1+((20000 * pipeRoughness)+ (1000000/Reynolds))), 1/3)
-}
+};
 
 //*-*-*-*-*-*-*END-*-*-*-*-*-*-*-*-//
 export const getlines: RequestHandler = async (req , res, next) => {
