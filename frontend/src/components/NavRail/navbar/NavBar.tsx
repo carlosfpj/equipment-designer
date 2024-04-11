@@ -1,5 +1,9 @@
 import { NavLink } from "react-router-dom";
 import { Container } from "react-bootstrap";
+import { ReactComponent as HomeLogo } from "../../../icons/Home.svg";
+import { ReactComponent as BlogLogo} from "../../../icons/Blog.svg";
+import { ReactComponent as DesignerLogo} from "../../../icons/Designer.svg";
+import { ReactComponent as AboutMeLogo} from "../../../icons/AboutMe.svg";
 import "./NavBar.css";
 
 const NavBar = () => {
@@ -20,28 +24,37 @@ const NavBar = () => {
             to="/"
             className="navlink"
             style={activeState}
-          >Home</NavLink>
+          ><span className="spanlogo">
+              <HomeLogo/>
+            </span>Home
+          </NavLink>
         </li>
         <li>
           <NavLink
             to="/blog"
             className="navlink"
             style={activeState}
-          >blog</NavLink>
+          ><span className="spanlogo">
+              <BlogLogo/>
+            </span>blog</NavLink>
         </li>
         <li>
           <NavLink
             to="/designer"
             className="navlink"
             style={activeState}
-          >designer</NavLink>
+          ><span className="spanlogo">
+              <DesignerLogo/>
+            </span>designer</NavLink>
         </li>
         <li>
           <NavLink
             to="/aboutme"
             className="navlink"
             style={activeState}
-          >about me</NavLink>
+          ><span className="spanlogo">
+              <AboutMeLogo/>
+            </span>about me</NavLink>
         </li>
       </ul>
     </Container>

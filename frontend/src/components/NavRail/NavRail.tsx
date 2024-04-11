@@ -7,9 +7,11 @@ const NavRail = () => {
 
   return (
     <div className={Styles.layoutColumn}>
-      <NavLogo />
-      <NavBar/>
-      <NavFooter/>
+      <div className={Styles.navContent}>
+        <NavLogo />
+        <NavBar />
+      </div>
+      <NavFooter />
     </div>
   )
 }

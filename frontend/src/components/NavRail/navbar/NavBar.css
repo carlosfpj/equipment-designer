@@ -1,35 +1,13 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-.navbar {
-  background-color: rgb(23 23 23);
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-}
-
-.navbar ul {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  gap: 15px;
-  padding: 1em;
-  list-style-type: none;
-}
-
-.navbar ul a {
-  color: rgb(229 229 229);
+.navlink {
   text-decoration: none;
-  font-family: inter;
-  padding: 1em;
+  color: #001d35;
 }
 
-.active {
-  color: rgb(34 197 94);
+li {
+  list-style: none;
+}
+
+.spanlogo:hover {
+  background-color: #e5e8ed;
+  text-decoration: none;
 }

@@ -1,4 +1,16 @@
 .layoutColumn {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  /* position: fixed; */
+  height: 100%;
+  overflow-y: auto;
+  background: #f3f6fc;
+}
+
+.navContent {
+  display: flex;
+  flex-direction: column;
+  width: 88px;
+  margin-top: 20px;
 }
