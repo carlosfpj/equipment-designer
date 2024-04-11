@@ -1,0 +1,4 @@
+.layoutColumn {
+  display: flex;
+  flex-direction: column;
+}

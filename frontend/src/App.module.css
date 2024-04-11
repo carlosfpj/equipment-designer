@@ -1,0 +1,17 @@
+.aside {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 10%;
+  min-width: 120px;
+}
+
+.layoutColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.layoutRow {
+  display: flex;
+  flex-direction: row;
+}

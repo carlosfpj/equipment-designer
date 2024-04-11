@@ -5,18 +5,19 @@ import Homepage from './pages/Homepage';
 import DesignerPage from './pages/Designerpage';
 import Blogpage from './pages/Blogpage';
 import AboutMePage from './pages/AboutMePage';
-import NavigationBar from './components/Navbar/NavBar';
+import NavRail from './components/NavRail/NavRail';
 import PipeLiquid from './pages/PipeLiquid';
 import SeparatorPage from './pages/SeparatorPage';
 import PipeGas from './pages/PipeGas';
 import OnConstruction from './pages/OnConstruction';
-import styles from "./assets/styles/Designerpage.module.css";
+import styles from './App.module.css';
 
 function App() {
   return (
     <BrowserRouter>
-        <NavigationBar />
-        <Routes>
+    <div className={styles.layoutRow}>
+      <NavRail />
+      <Routes>
           <Route
             path='/'
             element={<Homepage />}>
@@ -65,7 +66,8 @@ function App() {
             path='/aboutme'
             element={<OnConstruction page={"about me"} />}>
           </Route>
-        </Routes>
+      </Routes>
+    </div>
     </BrowserRouter>
   );
 }

@@ -1,13 +1,9 @@
-import "./Homepage.css";
+import styles from "./Homepage.module.css";
+import NavRail from "../components/NavRail/NavRail";
 
 const HomePage = () => {
   return (
-    <div className="main">
-      <header>
-        Homepage
-        <div className="main">hero</div>
-      </header>
-    </div>
+    <h1>Home</h1>
   )
 }
 
