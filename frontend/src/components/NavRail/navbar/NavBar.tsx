@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom";
-import { Container } from "react-bootstrap";
 import { ReactComponent as HomeLogo } from "../../../icons/Home.svg";
 import { ReactComponent as BlogLogo} from "../../../icons/Blog.svg";
 import { ReactComponent as DesignerLogo} from "../../../icons/Designer.svg";
@@ -10,26 +9,26 @@ const NavBar = () => {
 
   const activeState = ({ isActive }: { isActive: Boolean }) => {
     return {
-      color: isActive ? "rgb(253 230 138)" : "",
-      backgroundColor: isActive ? "rgb(69 26 3)" : "",
+      color: isActive ? "#001d35" : "",
       fontWeight: isActive ? "bold" : "",
     }
   }
 
   return (
-    <Container>
-      <ul>
-        <li>
+    <ul>
+      <li>
           <NavLink
             to="/"
             className="navlink"
             style={activeState}
-          ><span className="spanlogo">
+          ><span
+             className="spanlogo"
+             >
               <HomeLogo/>
             </span>Home
           </NavLink>
-        </li>
-        <li>
+      </li>
+      <li>
           <NavLink
             to="/blog"
             className="navlink"
@@ -37,8 +36,8 @@ const NavBar = () => {
           ><span className="spanlogo">
               <BlogLogo/>
             </span>blog</NavLink>
-        </li>
-        <li>
+      </li>
+      <li>
           <NavLink
             to="/designer"
             className="navlink"
@@ -46,8 +45,8 @@ const NavBar = () => {
           ><span className="spanlogo">
               <DesignerLogo/>
             </span>designer</NavLink>
-        </li>
-        <li>
+      </li>
+      <li>
           <NavLink
             to="/aboutme"
             className="navlink"
@@ -55,9 +54,8 @@ const NavBar = () => {
           ><span className="spanlogo">
               <AboutMeLogo/>
             </span>about me</NavLink>
-        </li>
-      </ul>
-    </Container>
+      </li>
+    </ul>
   )
 }
 

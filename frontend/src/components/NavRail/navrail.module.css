@@ -11,6 +11,7 @@
 .navContent {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   width: 88px;
   margin-top: 20px;
 }

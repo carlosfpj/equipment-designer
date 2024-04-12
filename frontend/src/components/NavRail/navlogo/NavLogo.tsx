@@ -1,15 +1,14 @@
-import logo from "../../../icons/logo.jpg";
+import logo from "../../../icons/logo.png";
+import styles from "./navlogo.module.css";
 
 const NavLogo = () => {
   return (
-    <li>
-        <img
+      <span className={styles.imagecontainer}>
+        <img className={styles.image}
           src={logo}
-          alt=""
-          width="30"
-          height="30"
+          alt="equipment designer logo"
         />
-    </li>
+      </span>
   )
 }
 
