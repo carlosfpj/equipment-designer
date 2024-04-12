@@ -21,11 +21,11 @@ const NavBar = () => {
             to="/"
             className="navlink"
             style={activeState}
-          ><span
-             className="spanlogo"
-             >
+          >
+            <span className="spanlogo">
               <HomeLogo/>
-            </span>Home
+            </span>
+            <div className="label">Home</div>
           </NavLink>
       </li>
       <li>
@@ -33,27 +33,36 @@ const NavBar = () => {
             to="/blog"
             className="navlink"
             style={activeState}
-          ><span className="spanlogo">
+          >
+            <span className="spanlogo">
               <BlogLogo/>
-            </span>blog</NavLink>
+            </span>
+            <div className="label">blog</div>
+          </NavLink>
       </li>
       <li>
           <NavLink
             to="/designer"
             className="navlink"
             style={activeState}
-          ><span className="spanlogo">
+          >
+            <span className="spanlogo">
               <DesignerLogo/>
-            </span>designer</NavLink>
+            </span>
+            <div className="label">designer</div>
+          </NavLink>
       </li>
       <li>
           <NavLink
             to="/aboutme"
             className="navlink"
             style={activeState}
-          ><span className="spanlogo">
+          >
+            <span className="spanlogo">
               <AboutMeLogo/>
-            </span>about me</NavLink>
+            </span>
+            <div className="label">about me</div>
+          </NavLink>
       </li>
     </ul>
   )

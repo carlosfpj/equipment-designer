@@ -12,6 +12,15 @@
   background: #c2e7ff;
 }
 
+.label {
+  text-align: center;
+  font-size: 12px;
+  margin-bottom: 4px;
+  line-height: 16px;
+  letter-spacing: .1px;
+  text-wrap: nowrap;
+}
+
 li {
   list-style: none;
 }
