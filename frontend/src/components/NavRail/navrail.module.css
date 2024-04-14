@@ -6,6 +6,7 @@
   height: 100%;
   overflow-y: auto;
   background: #f3f6fc;
+  z-index: 8;
 }
 
 .navContent {
@@ -14,4 +15,5 @@
   justify-content: center;
   width: 88px;
   margin-top: 20px;
+  vertical-align: baseline;
 }

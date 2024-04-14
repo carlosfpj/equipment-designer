@@ -1,13 +1,16 @@
-import logo from "../../../icons/dark_mode_icon.svg"
+import logo from "../../../icons/dark_mode_icon.svg";
+import "./navfooter.css";
 
 const NavFooter = () => {
   return (
-    <span>
-      <img
-        src={logo}
-        alt="equipment designer logo"
-      />
-    </span>
+    <div className="navFooterContainer">
+      <span className="spanFooterLogo">
+        <img
+          src={logo}
+          alt="equipment designer logo"
+        />
+      </span>
+    </div>
   )
 }
 

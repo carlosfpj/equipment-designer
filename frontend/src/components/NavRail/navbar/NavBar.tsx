@@ -15,56 +15,58 @@ const NavBar = () => {
   }
 
   return (
-    <ul>
-      <li>
+    <div className="navBarContainer">
+      <ul>
+        <li>
           <NavLink
             to="/"
             className="navlink"
             style={activeState}
           >
             <span className="spanlogo">
-              <HomeLogo/>
+              <HomeLogo />
             </span>
             <div className="label">Home</div>
           </NavLink>
-      </li>
-      <li>
+        </li>
+        <li>
           <NavLink
             to="/blog"
             className="navlink"
             style={activeState}
           >
             <span className="spanlogo">
-              <BlogLogo/>
+              <BlogLogo />
             </span>
-            <div className="label">blog</div>
+            <div className="label">Blog</div>
           </NavLink>
-      </li>
-      <li>
+        </li>
+        <li>
           <NavLink
             to="/designer"
             className="navlink"
             style={activeState}
           >
             <span className="spanlogo">
-              <DesignerLogo/>
+              <DesignerLogo />
             </span>
-            <div className="label">designer</div>
+            <div className="label">Designer</div>
           </NavLink>
-      </li>
-      <li>
+        </li>
+        <li>
           <NavLink
             to="/aboutme"
             className="navlink"
             style={activeState}
           >
             <span className="spanlogo">
-              <AboutMeLogo/>
+              <AboutMeLogo />
             </span>
-            <div className="label">about me</div>
+            <div className="label">About me</div>
           </NavLink>
-      </li>
-    </ul>
+        </li>
+      </ul>
+    </div>
   )
 }
 
