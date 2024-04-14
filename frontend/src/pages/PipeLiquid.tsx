@@ -75,7 +75,7 @@ const PipeLiquid = () => {
     e.preventDefault();
     try {
       if(!showOption) {
-        const res = await fetch(`${BASE_URL_BACK_DEV}/designer/pipes/singlephase/liquid/vel`, {
+        const res = await fetch(`${BASE_URL_BACK_PROD}/designer/pipes/singlephase/liquid/vel`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -97,7 +97,7 @@ const PipeLiquid = () => {
           console.log("an error has ocurred");
         }
       } else {
-        const res = await fetch(`${BASE_URL_BACK_DEV}/designer/pipes/singlephase/liquid/vp`, {
+        const res = await fetch(`${BASE_URL_BACK_PROD}/designer/pipes/singlephase/liquid/vp`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
