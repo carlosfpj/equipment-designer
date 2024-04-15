@@ -10,6 +10,7 @@ import PipeLiquid from './pages/PipeLiquid';
 import SeparatorPage from './pages/SeparatorPage';
 import PipeGas from './pages/PipeGas';
 import OnConstruction from './pages/OnConstruction';
+import NavigationDrawer from './layouts/NavigationDrawer/NavigationDrawer'
 import styles from './App.module.css';
 
 function App() {
@@ -17,58 +18,57 @@ function App() {
     <BrowserRouter>
     <div className={styles.layoutRow}>
       <NavRail />
-      <div style={{paddingLeft: "88px"}}>
-          <Routes>
+      <NavigationDrawer />
+      <Routes>
+          <Route
+            path='/'
+            element={<Homepage />}>
+          </Route>
+          <Route
+            path='/blog'
+            element={<OnConstruction page={"blog"} />}>
+          </Route>
+          <Route
+            path='/designer'
+            element={<DesignerPage />}>
             <Route
-              path='/'
-              element={<Homepage />}>
+              path='pipes/singlephase/liquid'
+              element={<PipeLiquid />}>
             </Route>
             <Route
-              path='/blog'
-              element={<OnConstruction page={"blog"} />}>
+              path='pipes/singlephase/gas'
+              element={<OnConstruction page={"pipes single phase gas"} />}>
             </Route>
             <Route
-              path='/designer'
-              element={<DesignerPage />}>
-              <Route
-                path='pipes/singlephase/liquid'
-                element={<PipeLiquid />}>
-              </Route>
-              <Route
-                path='pipes/singlephase/gas'
-                element={<OnConstruction page={"pipes single phase gas"} />}>
-              </Route>
-              <Route
-                path='pipes/twophase'
-                element={<OnConstruction page={"pipes two phase"} />}>
-              </Route>
-              <Route
-                path='pipes/multiphase'
-                element={<OnConstruction page={"pipes multiphase"} />}>
-              </Route>
-              <Route
-                path='equipment/separator/twophase'
-                element={<OnConstruction page={"separator two phase"} />}>
-              </Route>
-              <Route
-                path='equipment/separator/threephase'
-                element={<OnConstruction page={"separator three phase"} />}>
-              </Route>
-              <Route
-                path='equipment/scrubber'
-                element={<OnConstruction page={"scrubber"} />}>
-              </Route>
-              <Route
-                path='equipment/kod'
-                element={<OnConstruction page={"KOD"} />}>
-              </Route>
+              path='pipes/twophase'
+              element={<OnConstruction page={"pipes two phase"} />}>
             </Route>
             <Route
-              path='/aboutme'
-              element={<OnConstruction page={"about me"} />}>
+              path='pipes/multiphase'
+              element={<OnConstruction page={"pipes multiphase"} />}>
             </Route>
-          </Routes>
-      </div>
+            <Route
+              path='equipment/separator/twophase'
+              element={<OnConstruction page={"separator two phase"} />}>
+            </Route>
+            <Route
+              path='equipment/separator/threephase'
+              element={<OnConstruction page={"separator three phase"} />}>
+            </Route>
+            <Route
+              path='equipment/scrubber'
+              element={<OnConstruction page={"scrubber"} />}>
+            </Route>
+            <Route
+              path='equipment/kod'
+              element={<OnConstruction page={"KOD"} />}>
+            </Route>
+          </Route>
+          <Route
+            path='/aboutme'
+            element={<OnConstruction page={"about me"} />}>
+          </Route>
+      </Routes>
     </div>
     </BrowserRouter>
   );
