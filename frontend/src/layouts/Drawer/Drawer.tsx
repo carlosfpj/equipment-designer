@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import AsideButton from "../../components/AsideButton";
-import asideStyles from "./../NavigationDrawer/NavigationDrawer.module.css";
+import drawerStyles from "./../Drawer/Drawer.module.css";
 
 const Drawer = () => {
   return (
-    <aside className={asideStyles.aside}>
-      <details open className={asideStyles.details}>
-        <summary className={asideStyles.summary}>Pipes</summary>
-        <div className={asideStyles.buttonslayout}>
+    <nav className={drawerStyles.nav}>
+      <details open className={drawerStyles.details}>
+        <summary className={drawerStyles.summary}>Pipes</summary>
+        <div className={drawerStyles.buttonslayout}>
           <Link to="/designer/pipes/singlephase/liquid">
             <AsideButton>Single-phase, liquid</AsideButton>
           </Link>
@@ -22,9 +22,9 @@ const Drawer = () => {
           </Link>
         </div>
       </details>
-      <details className={asideStyles.details}>
-        <summary className={asideStyles.summary}>Equipment</summary>
-        <div className={asideStyles.buttonslayout}>
+      <details className={drawerStyles.details}>
+        <summary className={drawerStyles.summary}>Equipment</summary>
+        <div className={drawerStyles.buttonslayout}>
           <Link to="/designer/equipment/separator/twophase">
             <AsideButton>Two-phase Separators</AsideButton>
           </Link>
@@ -39,7 +39,7 @@ const Drawer = () => {
           </Link>
         </div>
       </details>
-    </aside>
+    </nav>
   )
 }
 

@@ -1,43 +1,5 @@
-.aside {
-  margin-left: 88px;
-}
-
-.details {
-  overflow: hidden;
-  margin-top: 0.5em;
-  border: 1px solid #dddddd;
-  background: #ffffff;
-  color: #333333;
-  border-radius: 3px;
-  position: relative;
-}
-
-.details[open] > summary::after {
-  content: " -";
-}
-
-.details >summary::after {
-  content: " +";
-}
-
-.summary {
-  display: block;
-  cursor: pointer;
-  padding: .5em, .5em, .5em, .7em;
-  background: #ededed;
-  color: #2b2b2b;
-  border-radius: 3px 3px 0 0;
-  font-size: calc(15px + 0.5vw);
-}
-
-.summary::after {
-  position: absolute;
-  right: 10px;
-}
-
-.buttonslayout {
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  row-gap: 5px;
+.DrawerContainer {
+  position: sticky;
+  top: 0;
+  padding-inline-start: 88px;
 }

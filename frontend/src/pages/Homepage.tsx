@@ -1,9 +1,10 @@
-import styles from "./Homepage.module.css";
-import NavRail from "../components/NavRail/NavRail";
-
 const HomePage = () => {
   return (
-    <h1>Home</h1>
+    <>
+      <li>Home</li>
+      <p>Home</p>
+    </>
+
   )
 }
 
