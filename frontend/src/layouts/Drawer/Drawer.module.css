@@ -25,7 +25,12 @@
   transform: translateX(0);
 }
 
-.close {
+.navClose {
+  display: block;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  left: 0;
   transform: translate(-220px);
 }
 

@@ -16,7 +16,7 @@ import { NavStateContext } from './utils/contexts/contexts';
 
 function App() {
 
-  const [navState, setNavState] = useState("close");
+  const [navState, setNavState] = useState("open");
 
   return (
     <BrowserRouter>

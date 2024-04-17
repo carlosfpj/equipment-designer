@@ -7,7 +7,8 @@ import { NavStateContext } from "../../utils/contexts/contexts";
 const Drawer = () => {
 
   const navState = useContext(NavStateContext);
-  const navClass = `${drawerStyles.nav} ${drawerStyles.close}`;
+
+  const navClass = navState === "open" ? `${drawerStyles.nav}` : `${drawerStyles.navClose}`
 
   return (
     <nav className={navClass}>
