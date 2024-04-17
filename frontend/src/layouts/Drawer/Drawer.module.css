@@ -22,11 +22,11 @@
   position: sticky;
   top: 0;
   left: 0;
-  transform: translateX(-120px);
+  transform: translateX(0);
 }
 
-.nav--open {
-  transform: translateX(0);
+.close {
+  transform: translate(-220px);
 }
 
 .summary {

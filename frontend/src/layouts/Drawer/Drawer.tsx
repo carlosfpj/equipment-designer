@@ -1,10 +1,16 @@
 import { Link } from "react-router-dom";
 import AsideButton from "../../components/AsideButton";
 import drawerStyles from "./../Drawer/Drawer.module.css";
+import { useContext } from "react";
+import { NavStateContext } from "../../utils/contexts/contexts";
 
 const Drawer = () => {
+
+  const navState = useContext(NavStateContext);
+  const navClass = `${drawerStyles.nav} ${drawerStyles.close}`;
+
   return (
-    <nav className={drawerStyles.nav}>
+    <nav className={navClass}>
       <details open className={drawerStyles.details}>
         <summary className={drawerStyles.summary}>Pipes</summary>
         <div className={drawerStyles.buttonslayout}>
