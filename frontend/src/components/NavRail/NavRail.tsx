@@ -3,13 +3,13 @@ import NavBar from "./navbar/NavBar";
 import NavFooter from "./navfooter/NavFooter";
 import Styles from "./navrail.module.css"
 
-const NavRail = () => {
+const NavRail = ({change}:any) => {
 
   return (
     <div className={Styles.layoutColumn}>
       <div className={Styles.navContent}>
         <NavLogo />
-        <NavBar />
+        <NavBar change1={change} />
       </div>
       <NavFooter />
     </div>

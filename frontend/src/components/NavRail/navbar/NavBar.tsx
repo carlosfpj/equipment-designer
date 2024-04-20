@@ -4,8 +4,12 @@ import { ReactComponent as BlogLogo} from "../../../icons/Blog.svg";
 import { ReactComponent as DesignerLogo} from "../../../icons/Designer.svg";
 import { ReactComponent as AboutMeLogo} from "../../../icons/AboutMe.svg";
 import "./NavBar.css";
+import { useContext } from "react";
+import { NavStateContext } from "../../../utils/contexts/contexts";
 
-const NavBar = () => {
+const NavBar = ({change1}:any) => {
+
+  const drawerState = useContext(NavStateContext);
 
   const activeState = ({ isActive }: { isActive: Boolean }) => {
     return {
@@ -22,6 +26,7 @@ const NavBar = () => {
             to="/"
             className="navlink"
             style={activeState}
+            onClick={()=> change1(false)}
           >
             <span className="spanlogo">
               <HomeLogo />
@@ -34,6 +39,7 @@ const NavBar = () => {
             to="/blog"
             className="navlink"
             style={activeState}
+            onClick={()=> change1(false)}
           >
             <span className="spanlogo">
               <BlogLogo />
@@ -46,6 +52,7 @@ const NavBar = () => {
             to="/designer"
             className="navlink"
             style={activeState}
+            onClick={()=> change1(true)}
           >
             <span className="spanlogo">
               <DesignerLogo />
@@ -58,6 +65,7 @@ const NavBar = () => {
             to="/aboutme"
             className="navlink"
             style={activeState}
+            onClick={()=> change1(false)}
           >
             <span className="spanlogo">
               <AboutMeLogo />

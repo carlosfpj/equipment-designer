@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import {Routes} from 'react-router-dom';
 import Homepage from './pages/Homepage';
@@ -10,14 +10,27 @@ import PipeLiquid from './pages/PipeLiquid';
 import SeparatorPage from './pages/SeparatorPage';
 import PipeGas from './pages/PipeGas';
 import OnConstruction from './pages/OnConstruction';
+import NavigationDrawer from './layouts/NavigationDrawer/NavigationDrawer'
 import styles from './App.module.css';
+import { NavStateContext } from './utils/contexts/contexts';
 
 function App() {
+
+  const [navState, setNavState] = useState(false);
+  const changeNavState = (state:Boolean)=> {
+    if(state === false) {
+      setNavState(false);
+    } else {
+      setNavState(true);
+    }
+  }
+
   return (
     <BrowserRouter>
     <div className={styles.layoutRow}>
-      <NavRail />
-      <div style={{paddingLeft: "88px"}}>
+      <NavStateContext.Provider value={navState}>
+          <NavRail change={setNavState} />
+          <NavigationDrawer />
           <Routes>
             <Route
               path='/'
@@ -68,7 +81,7 @@ function App() {
               element={<OnConstruction page={"about me"} />}>
             </Route>
           </Routes>
-      </div>
+      </NavStateContext.Provider>
     </div>
     </BrowserRouter>
   );
