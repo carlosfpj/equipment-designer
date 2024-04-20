@@ -1,3 +1,3 @@
 import { createContext } from "react";
 
-export const NavStateContext = createContext("close");
+export const NavStateContext = createContext(false);

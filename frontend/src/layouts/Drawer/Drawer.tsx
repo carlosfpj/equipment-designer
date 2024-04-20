@@ -8,7 +8,7 @@ const Drawer = () => {
 
   const navState = useContext(NavStateContext);
 
-  const navClass = navState === "open" ? `${drawerStyles.nav}` : `${drawerStyles.navClose}`
+  const navClass = navState === true ? `${drawerStyles.nav}` : `${drawerStyles.navClose}`
 
   return (
     <nav className={navClass}>

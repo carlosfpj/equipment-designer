@@ -16,13 +16,20 @@ import { NavStateContext } from './utils/contexts/contexts';
 
 function App() {
 
-  const [navState, setNavState] = useState("open");
+  const [navState, setNavState] = useState(false);
+  const changeNavState = (state:Boolean)=> {
+    if(state === false) {
+      setNavState(false);
+    } else {
+      setNavState(true);
+    }
+  }
 
   return (
     <BrowserRouter>
     <div className={styles.layoutRow}>
       <NavStateContext.Provider value={navState}>
-          <NavRail />
+          <NavRail change={setNavState} />
           <NavigationDrawer />
           <Routes>
             <Route
