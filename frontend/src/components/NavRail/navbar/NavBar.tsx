@@ -9,17 +9,13 @@ import { NavStateContext } from "../../../utils/contexts/contexts";
 
 const NavBar = ({change1}:any) => {
 
+  const drawerState = useContext(NavStateContext);
+
   const activeState = ({ isActive }: { isActive: Boolean }) => {
     return {
       color: isActive ? "#001d35" : "",
       fontWeight: isActive ? "bold" : "",
     }
-  }
-
-  const drawerState = useContext(NavStateContext);
-
-  const handleClick = (e:React.MouseEvent):void => {
-    console.log(drawerState);
   }
 
   return (
