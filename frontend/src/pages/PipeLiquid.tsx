@@ -9,6 +9,7 @@ import Line from '../components/Line';
 import { Container } from 'react-bootstrap';
 import * as LinesApi from '../network/line_api';
 import { Line as LineModel } from '../models/line';
+import pipeliquid from "../assets/images/pipeliquid.jpg"
 
 const PipeLiquid = () => {
   const [lines, setLines] = useState<LineModel[]>([]);
@@ -144,7 +145,11 @@ const PipeLiquid = () => {
 
   return (
     <Container>
-      <h1>Single Phase-Liquid</h1>
+      <div className="hero">
+        <img src={pipeliquid}></img>
+        <h1>Single Phase-Liquid</h1>
+      </div>
+
       <h2>Sizing Criteria</h2>
       <h3>API RP 14E</h3>
       <Theory/>
