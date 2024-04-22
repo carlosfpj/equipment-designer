@@ -5,10 +5,12 @@ import styles from "./NavigationDrawer.module.css";
 const NavigationDrawer = () => {
 
   return (
-    <div className={styles.DrawerContainer}>
-      <Drawer/>
-      <AppContent/>
-    </div>
+    <>
+      <div className={styles.DrawerContainer}>
+        <Drawer />
+      </div>
+      <AppContent />
+    </>
   )
 }
 

@@ -1,5 +1,5 @@
 .DrawerContainer {
   position: sticky;
   top: 0;
-  padding-inline-start: 88px;
+  margin-inline-start: 88px;
 }

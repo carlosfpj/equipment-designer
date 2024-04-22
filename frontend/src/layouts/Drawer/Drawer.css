@@ -29,15 +29,22 @@
   transform: translateX(0);
   padding-top: 8px;
   background: #f3f6fc;
+  transition: transform 0.3s linear;
 }
 
 .navClose {
   display: block;
   height: 100vh;
-  position: sticky;
+  width: 230px;
+  border-left: 1px solid #e1e3e1;
+  border-radius: 5px;
+  position: absolute;
+  background: #f3f6fc;
   top: 0;
   left: 0;
-  transform: translate(-220px);
+  padding-top: 8px;
+  transform: translateX(-270px);
+  transition: transform 0.3s linear;
 }
 
 .navlayout {
