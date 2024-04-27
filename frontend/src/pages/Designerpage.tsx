@@ -5,7 +5,7 @@ const DesignerPage = () => {
   return (
       <div className={styles.layoutRow}>
         <main>
-          <Outlet />
+          AQUI VA DESIGNER PAGE
         </main>
       </div>
   )
