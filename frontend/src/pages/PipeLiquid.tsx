@@ -6,10 +6,9 @@ import styles from '../assets/styles/LinePage.module.css';
 import AddLineDialog from '../components/addLinesDialog';
 import Theory from '../components/Theory';
 import Line from '../components/Line';
-import { Container } from 'react-bootstrap';
 import * as LinesApi from '../network/line_api';
 import { Line as LineModel } from '../models/line';
-import pipeliquid from "../assets/images/pipeliquid.jpg"
+import "./PipeLiquid.css";
 
 const PipeLiquid = () => {
   const [lines, setLines] = useState<LineModel[]>([]);
@@ -144,21 +143,29 @@ const PipeLiquid = () => {
   // }, []);
 
   return (
-    <Container>
+    <div>
       <div className="hero">
-        <img src={pipeliquid}></img>
-        <h1>Single Phase-Liquid</h1>
+        <div className="full-width">
+          <div className="hero-content">
+            <div className="hero-image">
+              <div className="hero-text">
+                <h1>Single Phase-Liquid</h1>
+                <h2>Sizing Criteria</h2>
+                <h3>API RP 14E</h3>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <h2>Sizing Criteria</h2>
-      <h3>API RP 14E</h3>
-      <Theory/>
+
+      <Theory />
 
       <Button onClick={() => setShowAddLineDialog(true)}>Add new Line Calculation</Button>
 
       <p>Please insert data to calculate</p>
       <form onSubmit={handleSubmit}>
-        <label>select what you desire</label><br/>
+        <label>select what you desire</label><br />
         <input type='radio'
           id='vel'
           name='a'
@@ -187,12 +194,12 @@ const PipeLiquid = () => {
         <label htmlFor="VP">Velocity and Pressure Drop</label>
         <br /><br />
         <label>Liquid flow rate[barrels/day]</label>
-        <input type='text' onChange={handleFlowChange} value={flowRate}/><br/>
+        <input type='text' onChange={handleFlowChange} value={flowRate} /><br />
         <label>pipe inside diameter[inches]</label>
-        <input type='text' onChange={handlepipeDiameterChange} value={pipeDiameter} /><br/>
+        <input type='text' onChange={handlepipeDiameterChange} value={pipeDiameter} /><br />
         {showOption &&
           <div>
-            <label htmlFor='material'>Pipe material</label><br/>
+            <label htmlFor='material'>Pipe material</label><br />
             <select name='material' id='material' onChange={handlePipeMaterialChange}>
               <option>Select one from this dropdown list</option>
               <option value="1">1. Drawn Cooper, Lead, Brass, new Aluminum</option>
@@ -216,7 +223,7 @@ const PipeLiquid = () => {
               <option value="19">19. Well planed wood</option>
               <option value="20">20. Ordinary wood</option>
             </select>
-            <br/>
+            <br />
             <label>Liquid Specific Gravity [S]</label>
             <input type='text' onChange={handleSGChange} value={SG} /><br />
             <label>Liquid Density [lb/ft3]</label>
@@ -224,7 +231,7 @@ const PipeLiquid = () => {
             <label>Liquid Viscocity [Cp]</label>
             <input type='text' onChange={handleViscocityChange} value={liquidViscocity} /><br />
           </div>}
-          <button>submit</button>
+        <button>submit</button>
       </form>
 
       <p>velocity: {resultVelocity} ft/seg</p>
@@ -248,7 +255,7 @@ const PipeLiquid = () => {
           }}
         />
       }
-    </Container>
+    </div>
   )
 }
 
