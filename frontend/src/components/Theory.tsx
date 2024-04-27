@@ -6,7 +6,7 @@ import "./Theory.css";
 const Theory = () => {
   return (
     <div className="theory">
-      <p className="p">Single-phase liquid lines should be sized primarily on the basis of flow velocity.
+      <p className="p"><strong>Single-phase liquid</strong> lines should be sized primarily on the basis of flow velocity.
         For lines transporting liquids in single-phase from one pressure vessel to another by pressure differential,
         the flow velocity should not exceed 15ft/s at maximum flow rates, to minimize flashing ahead of the control valve.
         If practical, flow velocity should not be less than 4ft/s to minimize deposition of sand and other solids.
