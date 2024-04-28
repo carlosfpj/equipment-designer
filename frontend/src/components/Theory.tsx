@@ -2,10 +2,11 @@ import fig1 from '../assets/images/1.png';
 import fig2 from '../assets/images/2.png';
 import fig3 from '../assets/images/3.png';
 import "./Theory.css";
-import { Line } from 'react-chartjs-2';
-import {data, options} from "./../components/Charts/test";
+import ChartTest from './Charts/Test';
 
 const Theory = () => {
+
+  const data = [0,1,2,3];
 
   return (
     <div className="theory">
@@ -29,7 +30,7 @@ const Theory = () => {
         d&#8321; = pipe inside diameter, inches.
       </p>
 
-      <Line options={options} data={data}></Line>
+      <ChartTest data={data}></ChartTest>
       <img alt='velocity in liquid lines' src={fig1}></img>
 
       <p className="p">Pressure drop (psi per 100 feet of flow length) for single phase liquid lines may be read
