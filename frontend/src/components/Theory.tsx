@@ -6,8 +6,16 @@ import ChartTest from './Charts/Test';
 
 const Theory = () => {
 
-  const data = [0,1,2,3];
-
+  const data = [
+      { x: 100, y: 3 },
+      { x: 300, y: 9 },
+      { x: 1600, y: 50 },
+    ];
+  const data2 = [
+    { x: 13000, y: 0.5 },
+    { x: 40000, y: 1.5 },
+    { x: 100000, y: 3.7 },
+  ];
   return (
     <div className="theory">
       <p className="p">Single-phase liquid lines should be sized primarily on the basis of flow velocity.
@@ -30,7 +38,7 @@ const Theory = () => {
         d&#8321; = pipe inside diameter, inches.
       </p>
 
-      <ChartTest data={data}></ChartTest>
+      <ChartTest data={data} data2={data2}></ChartTest>
       <img alt='velocity in liquid lines' src={fig1}></img>
 
       <p className="p">Pressure drop (psi per 100 feet of flow length) for single phase liquid lines may be read
