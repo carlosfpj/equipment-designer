@@ -2,6 +2,7 @@ import * as d3 from "d3";
 import { useEffect, useState } from "react";
 
 export default function ChartTest({
+  data,
   width = 640,
   height = 400,
   marginTop = 20,
@@ -9,22 +10,6 @@ export default function ChartTest({
   marginRight = 20,
   marginLeft = 40,
 }) {
-
-  const [data, setData] = useState([]);
-
-  useEffect(()=> {
-    let v = [];
-    let d = 0.614;
-    let data = [];
-
-    for (let i = 10; i < 100000;) {
-      v[i] = (0.012 * (i)) / (d ** 2);
-      data.push(i, v[i]);
-      i = i + 100;
-    }
-    setData(data);
-    console.log(data);
-  }, []);
 
   // const data = [
   //     { x: 100, y: 3 },
@@ -35,19 +20,20 @@ export default function ChartTest({
   //     { x: 100000, y: 3.7 },
   //   ]
 
+  console.log(data);
+
     //here I declare the X scale.
     const xScale = d3.scaleLog([100,100000], [marginLeft, width]);
 
     //here I declare the Y scale
-    const yScale = d3.scaleLog([0.5,50], [height - marginBottom, marginTop]
-    )
+    const yScale = d3.scaleLog([0.5,50], [height - marginBottom, marginTop]);
 
     //Create the horizontal and vertical axis
     const xAxis = d3.axisBottom(xScale).tickSizeOuter(0);
     const yAxis = d3.axisLeft(yScale);
 
     //here i write the line creator
-    const line = d3.line().x(d => xScale(d.x)).y(d => yScale(d.y));
+    const line = d3.line().x(d => xScale(d.i)).y(d => yScale(d.v));
 
     useEffect(() => {
       d3.select(".x-axis")
