@@ -6,7 +6,7 @@ export default function ChartTest({
   width = 640,
   height = 400,
   marginTop = 20,
-  marginBottom = 30,
+  marginBottom = 20,
   marginRight = 20,
   marginLeft = 40,
 }) {
@@ -48,7 +48,7 @@ export default function ChartTest({
     }, [xAxis, yAxis]);
 
   return (
-    <svg width={width} height={height}>
+    <svg width={width} height={height} >
       <path fill="none" stroke="currentColor" strokeWidth="1.5" d={line(data[0])}/>
       <g fill="white" stroke="currentColor" strokeWidth="1.5">
         {data.map((d,i) => (<line key={i} cx={xScale(d)} cy={yScale(i)} r="2.5" />))}
@@ -113,8 +113,6 @@ export default function ChartTest({
       <g fill="white" stroke="currentColor" strokeWidth="1.5">
         {data.map((d, i) => (<line key={i} cx={xScale(d)} cy={yScale(i)} r="2.5" />))}
       </g>
-
-
       <g className="x-axis" transform={`translate(0,${height - marginBottom})`}></g>
       <g className="y-axis" transform={`translate(${marginLeft}, 0)`}></g>
     </svg>
