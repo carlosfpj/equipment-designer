@@ -49,15 +49,71 @@ export default function ChartTest({
 
   return (
     <svg width={width} height={height}>
-      <path fill="none" stroke="currentColor" strokeWidth="1.5" d={line(data)}/>
+      <path fill="none" stroke="currentColor" strokeWidth="1.5" d={line(data[0])}/>
       <g fill="white" stroke="currentColor" strokeWidth="1.5">
         {data.map((d,i) => (<line key={i} cx={xScale(d)} cy={yScale(i)} r="2.5" />))}
       </g>
-
-      {/* <path fill="none" stroke="currentColor" strokeWidth="1.5" d={line(data2)} />
+      <path fill="none" stroke="currentColor" strokeWidth="1.5" d={line(data[1])} />
       <g fill="white" stroke="currentColor" strokeWidth="1.5">
-        {data2.map((d, i) => (<line key={i} cx={xScale(d)} cy={yScale(i)} r="2.5" />))}
-      </g> */}
+        {data.map((d, i) => (<line key={i} cx={xScale(d)} cy={yScale(i)} r="2.5" />))}
+      </g>
+      <path fill="none" stroke="currentColor" strokeWidth="1.5" d={line(data[2])} />
+      <g fill="white" stroke="currentColor" strokeWidth="1.5">
+        {data.map((d, i) => (<line key={i} cx={xScale(d)} cy={yScale(i)} r="2.5" />))}
+      </g>
+      <path fill="none" stroke="currentColor" strokeWidth="1.5" d={line(data[3])} />
+      <g fill="white" stroke="currentColor" strokeWidth="1.5">
+        {data.map((d, i) => (<line key={i} cx={xScale(d)} cy={yScale(i)} r="2.5" />))}
+      </g>
+      <path fill="none" stroke="currentColor" strokeWidth="1.5" d={line(data[4])} />
+      <g fill="white" stroke="currentColor" strokeWidth="1.5">
+        {data.map((d, i) => (<line key={i} cx={xScale(d)} cy={yScale(i)} r="2.5" />))}
+      </g>
+      <path fill="none" stroke="currentColor" strokeWidth="1.5" d={line(data[5])} />
+      <g fill="white" stroke="currentColor" strokeWidth="1.5">
+        {data.map((d, i) => (<line key={i} cx={xScale(d)} cy={yScale(i)} r="2.5" />))}
+      </g>
+      <path fill="none" stroke="currentColor" strokeWidth="1.5" d={line(data[6])} />
+      <g fill="white" stroke="currentColor" strokeWidth="1.5">
+        {data.map((d, i) => (<line key={i} cx={xScale(d)} cy={yScale(i)} r="2.5" />))}
+      </g>
+      <path fill="none" stroke="currentColor" strokeWidth="1.5" d={line(data[7])} />
+      <g fill="white" stroke="currentColor" strokeWidth="1.5">
+        {data.map((d, i) => (<line key={i} cx={xScale(d)} cy={yScale(i)} r="2.5" />))}
+      </g>
+      <path fill="none" stroke="currentColor" strokeWidth="1.5" d={line(data[8])} />
+      <g fill="white" stroke="currentColor" strokeWidth="1.5">
+        {data.map((d, i) => (<line key={i} cx={xScale(d)} cy={yScale(i)} r="2.5" />))}
+      </g>
+      <path fill="none" stroke="currentColor" strokeWidth="1.5" d={line(data[9])} />
+      <g fill="white" stroke="currentColor" strokeWidth="1.5">
+        {data.map((d, i) => (<line key={i} cx={xScale(d)} cy={yScale(i)} r="2.5" />))}
+      </g>
+      <path fill="none" stroke="currentColor" strokeWidth="1.5" d={line(data[10])} />
+      <g fill="white" stroke="currentColor" strokeWidth="1.5">
+        {data.map((d, i) => (<line key={i} cx={xScale(d)} cy={yScale(i)} r="2.5" />))}
+      </g>
+      <path fill="none" stroke="currentColor" strokeWidth="1.5" d={line(data[11])} />
+      <g fill="white" stroke="currentColor" strokeWidth="1.5">
+        {data.map((d, i) => (<line key={i} cx={xScale(d)} cy={yScale(i)} r="2.5" />))}
+      </g>
+      <path fill="none" stroke="currentColor" strokeWidth="1.5" d={line(data[12])} />
+      <g fill="white" stroke="currentColor" strokeWidth="1.5">
+        {data.map((d, i) => (<line key={i} cx={xScale(d)} cy={yScale(i)} r="2.5" />))}
+      </g>
+      <path fill="none" stroke="currentColor" strokeWidth="1.5" d={line(data[13])} />
+      <g fill="white" stroke="currentColor" strokeWidth="1.5">
+        {data.map((d, i) => (<line key={i} cx={xScale(d)} cy={yScale(i)} r="2.5" />))}
+      </g>
+      <path fill="none" stroke="currentColor" strokeWidth="1.5" d={line(data[14])} />
+      <g fill="white" stroke="currentColor" strokeWidth="1.5">
+        {data.map((d, i) => (<line key={i} cx={xScale(d)} cy={yScale(i)} r="2.5" />))}
+      </g>
+      <path fill="none" stroke="currentColor" strokeWidth="1.5" d={line(data[15])} />
+      <g fill="white" stroke="currentColor" strokeWidth="1.5">
+        {data.map((d, i) => (<line key={i} cx={xScale(d)} cy={yScale(i)} r="2.5" />))}
+      </g>
+
 
       <g className="x-axis" transform={`translate(0,${height - marginBottom})`}></g>
       <g className="y-axis" transform={`translate(${marginLeft}, 0)`}></g>
