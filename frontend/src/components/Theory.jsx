@@ -2,8 +2,8 @@ import fig1 from '../assets/images/1.png';
 import fig2 from '../assets/images/2.png';
 import fig3 from '../assets/images/3.png';
 import "./Theory.css";
-import ChartTest from './Charts/Test';
-import { fd, parts } from '../utils/chartDataGenerator';
+import VelocityLiquid from './Charts/VelocityLiquid';
+import { fd, parts } from '../utils/VelocityLiquidChartDataGenerator';
 
 const Theory = () => {
 
@@ -29,9 +29,7 @@ const Theory = () => {
         d&#8321; = pipe inside diameter, inches.
       </p>
 
-      <ChartTest data={parts}></ChartTest>
-      <img alt='velocity in liquid lines' src={fig1}></img>
-
+      <VelocityLiquid data={parts}></VelocityLiquid>
       <p className="p">Pressure drop (psi per 100 feet of flow length) for single phase liquid lines may be read
         from figure 2 or may be calculated using the following equiation:
       </p>

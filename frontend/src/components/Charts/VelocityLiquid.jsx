@@ -2,7 +2,7 @@ import * as d3 from "d3";
 import { useEffect, useState } from "react";
 
 export default function ChartTest({
-  data,
+  // data,
   width = 640,
   height = 400,
   marginTop = 20,
@@ -11,14 +11,26 @@ export default function ChartTest({
   marginLeft = 40,
 }) {
 
-  // const data = [
-  //     { x: 100, y: 3 },
-  //     { x: 300, y: 9 },
-  //     { x: 1600, y: 50 },
-  //     { x: 13000, y: 0.5 },
-  //     { x: 40000, y: 1.5 },
-  //     { x: 100000, y: 3.7 },
-  //   ]
+  const data = [
+    [{ i: 300, v: 0.50 },
+     { i: 400, v: 1 }
+    ],
+    [{ i: 1600, v: 50 }],
+    [{ i: 13000, v: 0.5 }],
+    [{ i: 40000, v: 1.5 }],
+    [{ i: 100000, v: 3.7 }],
+    [{ i: 100, v: 3 }],
+    [{ i: 300, v: 9 }],
+    [{ i: 1600, v: 50 }],
+    [{ i: 13000, v: 0.5 }],
+    [{ i: 40000, v: 1.5 }],
+    [{ i: 100000, v: 3.7 }],
+    [{ i: 1600, v: 50 }],
+    [{ i: 13000, v: 0.5 }],
+    [{ i: 40000, v: 1.5 }],
+    [{ i: 100000, v: 3.7 }],
+    [{ i: 100000, v: 3.7 }],
+    ]
 
   // console.log(data);
 

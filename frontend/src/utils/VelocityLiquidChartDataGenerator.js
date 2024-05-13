@@ -18,7 +18,7 @@ let fd = [];
       } else {
         let point = { v, i };
         data.push(point);
-        i = i + 100;
+        i = i + 10;
       }
     }
   }
