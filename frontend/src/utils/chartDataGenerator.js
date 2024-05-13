@@ -1,5 +1,6 @@
 let data = [];
 const parts = [];
+let fd = [];
 
 (function data1() {
 
@@ -22,12 +23,10 @@ const parts = [];
     }
   }
   sliceData(data, 16);
+  deleteExtraData(parts);
 })();
 
 function sliceData(d, numParts) {
-
-  // const filteredData1 = d.filter(d => d.v > 50);
-  // const filteredData2 = filteredData1.filter(d => d.v < 50);
 
   const partLength = Math.floor(d.length / numParts);
 
@@ -39,4 +38,11 @@ function sliceData(d, numParts) {
   return parts;
 }
 
-export {parts};
+function deleteExtraData(array) {
+  for(let i=0; i<array.length; i++) {
+    fd = array[i].filter(item => item.v >= 0.4);
+    console.log(fd);
+  }
+}
+
+export {fd, parts};

@@ -20,7 +20,7 @@ export default function ChartTest({
   //     { x: 100000, y: 3.7 },
   //   ]
 
-  console.log(data);
+  // console.log(data);
 
     //here I declare the X scale.
     const xScale = d3.scaleLog([100,100000], [marginLeft, width]);
