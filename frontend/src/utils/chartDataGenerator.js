@@ -12,18 +12,22 @@ const parts = [];
     let d = iterable[j];
     for(let i = 100; i< 100000;) {
       v = (0.012 * (i)) / (d ** 2);
-      if(v < 50 || v > 0.5) {
-        let point = {v,i};
+      if(v < 0.5 && v> 50){
+        continue;
+      } else {
+        let point = { v, i };
         data.push(point);
         i = i + 100;
-      } else break;
+      }
     }
   }
-
   sliceData(data, 16);
 })();
 
 function sliceData(d, numParts) {
+
+  // const filteredData1 = d.filter(d => d.v > 50);
+  // const filteredData2 = filteredData1.filter(d => d.v < 50);
 
   const partLength = Math.floor(d.length / numParts);
 
@@ -32,9 +36,7 @@ function sliceData(d, numParts) {
     const endIndex = startIndex + partLength;
     parts.push(d.slice(startIndex, endIndex));
   }
-
   return parts;
 }
 
 export {parts};
-
