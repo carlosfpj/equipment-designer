@@ -2,8 +2,10 @@ import fig1 from '../assets/images/1.png';
 import fig2 from '../assets/images/2.png';
 import fig3 from '../assets/images/3.png';
 import "./Theory.css";
+import VelocityLiquid from './Charts/VelocityLiquid';
 
 const Theory = () => {
+
   return (
     <div className="theory">
       <p className="p"><strong>Single-phase liquid</strong> lines should be sized primarily on the basis of flow velocity.
@@ -26,8 +28,7 @@ const Theory = () => {
         d&#8321; = pipe inside diameter, inches.
       </p>
 
-      <img alt='velocity in liquid lines' src={fig1}></img>
-
+      <VelocityLiquid/>
       <p className="p">Pressure drop (psi per 100 feet of flow length) for single phase liquid lines may be read
         from figure 2 or may be calculated using the following equiation:
       </p>
