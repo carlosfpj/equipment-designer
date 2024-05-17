@@ -29,7 +29,7 @@ const Theory = () => {
         d&#8321; = pipe inside diameter, inches.
       </p>
 
-      <VelocityLiquid data={parts}></VelocityLiquid>
+      <VelocityLiquid/>
       <p className="p">Pressure drop (psi per 100 feet of flow length) for single phase liquid lines may be read
         from figure 2 or may be calculated using the following equiation:
       </p>
