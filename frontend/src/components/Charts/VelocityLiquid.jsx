@@ -69,10 +69,17 @@ export default function ChartTest() {
           x2: (d) => (Y(100_000, d[0]) < 50 ? 100_000 : Yr(50, d[0])),
           y2: (d) => Math.min(Y(100_000, d[0]), 50)
         }),
-        Plot.ruleY([MAX_VELOCITY], { stroke: "red"}),
-
-        Plot.ruleY([MIN_VELOCITY], { stroke: "red", text: "MINIMUM"}),
-
+        Plot.ruleY([MAX_VELOCITY, MIN_VELOCITY], { stroke: "red"}),
+        Plot.text([MIN_VELOCITY, MAX_VELOCITY], {
+          y: (d) => d,
+          x: [150, 150],
+          text: ["Minimum", "Maximum"],
+          stroke: "var(--plot-background)",
+          fill: "currentColor",
+          fontWeight: "bold",
+          lineAnchor: "bottom",
+          dy: -3,
+        }),
         Plot.text(values, {
           text: (d) => d[1],
           x: (d) => x(d[0]),
@@ -85,6 +92,7 @@ export default function ChartTest() {
           fill: "currentColor",
           stroke: "var(--plot-background)"
         }),
+
       ]
     });
     containerRef.current.append(plot);
