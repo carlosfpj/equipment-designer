@@ -19,6 +19,8 @@ export default function ChartTest() {
   const Y = (x,d) => (0.012 * x) / d **2;
   const Yr = (y,d) => (d ** 2 * y) / 0.012;
   const x = (d) => Math.exp(Math.log(800) + 1.2 * Math.log(d));
+  const MAX_VELOCITY = 14;
+  const MIN_VELOCITY = 3;
 
   useEffect(() => {
     if(values === undefined) return;
@@ -26,8 +28,8 @@ export default function ChartTest() {
     const plot = Plot.plot({
       width: 800,
       height: 600,
-      x: { type: "log", domain: [100, 100_000] },
-      y: { type: "log", domain: [0.5, 50] },
+      x: { type: "log", domain: [100, 100_000], label: "FLOW [BARREL/DAY]" },
+      y: { type: "log", domain: [0.5, 50], tickFormat: ",", label: "VELOCITY [FT/S]" },
       marks: [
         Plot.gridX(
           d3
@@ -67,6 +69,9 @@ export default function ChartTest() {
           x2: (d) => (Y(100_000, d[0]) < 50 ? 100_000 : Yr(50, d[0])),
           y2: (d) => Math.min(Y(100_000, d[0]), 50)
         }),
+        Plot.ruleY([MAX_VELOCITY], { stroke: "red"}),
+
+        Plot.ruleY([MIN_VELOCITY], { stroke: "red", text: "MINIMUM"}),
 
         Plot.text(values, {
           text: (d) => d[1],
@@ -79,7 +84,7 @@ export default function ChartTest() {
           dy: -5,
           fill: "currentColor",
           stroke: "var(--plot-background)"
-        })
+        }),
       ]
     });
     containerRef.current.append(plot);
