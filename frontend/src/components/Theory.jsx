@@ -3,6 +3,7 @@ import fig2 from '../assets/images/2.png';
 import fig3 from '../assets/images/3.png';
 import "./Theory.css";
 import VelocityLiquid from './Charts/VelocityLiquid';
+import PressureDropLiquidChart from './Charts/PressureDropLiquid';
 
 const Theory = () => {
 
@@ -44,6 +45,7 @@ const Theory = () => {
         d&#8321; = pipe inside diameter, inches.<br />
       </p><br />
 
+      <PressureDropLiquidChart/>
       <img alt='pressure drop in liquid lines' src={fig2}></img>
       <br />
 
