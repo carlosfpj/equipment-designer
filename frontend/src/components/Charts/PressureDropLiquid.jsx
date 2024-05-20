@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 export default function PressureDropLiquidChart() {
 
   const SP_GR = 1;
-  const MOODY = 0.37;
+  const MOODY = 0.36;
   const Y = (x, d) => (0.000115 * MOODY * (x ** 2) * SP_GR / (d ** 5));
   const Yr = (y, d) => Math.sqrt((y * d ** 5) / (0.000115 * MOODY * SP_GR));
   const x = (d) => Math.exp(Math.log(250) + 2 * Math.log(d));
