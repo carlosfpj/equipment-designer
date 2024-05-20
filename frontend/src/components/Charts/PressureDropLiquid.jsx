@@ -6,6 +6,9 @@ export default function PressureDropLiquidChart() {
 
   const SP_GR = 1;
   const MOODY = 0.37;
+  const Y = (x, d) => (0.000115 * MOODY * (x ** 2) * SP_GR / (d ** 5));
+  const Yr = (y, d) => Math.sqrt((y * d ** 5) / (0.000115 * MOODY * SP_GR));
+  const x = (d) => Math.exp(Math.log(250) + 2 * Math.log(d));
 
   const containerRef = useRef();
 
@@ -18,16 +21,6 @@ export default function PressureDropLiquidChart() {
                  [11.938, '12" SCH 40 (I.D = 11.938")'],  [13.25, '14" SCH 30 (I.D = 13.25")'],
                  [15.250, '16" SCH 30 (I.D = 15.250")',], [17.25, '18" STD W.T (I.D = 17.250")'],
   ];
-
-  //V₁ = 0.012 x Q₁ / d₁²
-  // const Y = (x, d) => (0.012 * x) / d ** 2;
-  // const Yr = (y, d) => (d ** 2 * y) / 0.012;
-  //∆P = 0.00115f Q₁²S₁ / d₁⁵
-
-
-  const Y = (x, d) => (0.000115 * MOODY * (x**2) * SP_GR / (d ** 5));
-  const Yr = (y, d) => Math.sqrt((y * d**5)/(0.000115 * MOODY * SP_GR));
-  const x = (d) => Math.exp(Math.log(225) + 2 * Math.log(d));
 
   useEffect(() => {
     if (values === undefined) return;
@@ -81,9 +74,10 @@ export default function PressureDropLiquidChart() {
           y: (d) => Y(x(d[0]), d[0]),
           rotate: -66,
           textAnchor: "start",
+          fontSize: "9",
           fontWeight: "bold",
-          dx: -5,
-          dy: -5,
+          dx: 5,
+          dy: 5,
           fill: "currentColor",
           stroke: "var(--plot-background)"
         }),
