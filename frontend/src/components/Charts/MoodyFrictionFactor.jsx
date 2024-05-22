@@ -75,6 +75,14 @@ export default function PressureDropLiquidChart() {
           y2: 0.026,
         }),
 
+        Plot.line([[3900, 0.076], [100_000_000, 0.072]], {
+          x1: 3900,
+          y1: 0.076,
+          x2: 100000000,
+          y2: 0.072,
+          curve: "step"
+        }),
+
         Plot.text([5], {
           y: (d) => d,
           x: [104],
