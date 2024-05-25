@@ -75,13 +75,56 @@ export default function PressureDropLiquidChart() {
           y2: 0.026,
         }),
 
-        Plot.line([[3900, 0.076], [100_000_000, 0.072]], {
-          x1: 3900,
-          y1: 0.076,
+        Plot.line([[3900, 0.076], [9500, 0.074], [20000, 0.072]], {
+          x0: 3900,
+          y0: 0.076,
+          x1: 9500,
+          y1: 0.074,
+          curve: "basis"
+        }),
+        Plot.line([[20000, 0.072,], [100000000, 0.072,]], {
+          x1: 20000,
+          y1: 0.072,
           x2: 100000000,
           y2: 0.072,
-          curve: "step"
         }),
+
+        Plot.line([[3300, 0.073], [9000, 0.067], [40000, 0.065]], {
+          x0: 3300,
+          y0: 0.073,
+          x1: 9000,
+          y1: 0.067,
+          curve: "basis"
+        }),
+        Plot.line([[40000, 0.065,], [100000000, 0.065,]], {
+          x1: 40000,
+          y1: 0.065,
+        }),
+
+        Plot.line([[3250, 0.066], [12000, 0.059], [90000, 0.057]], {
+          x0: 3250,
+          y0: 0.066,
+          x1: 12000,
+          y1: 0.059,
+          curve: "natural"
+        }),
+        Plot.line([[90000, 0.057,], [100000000, 0.057,]], {
+          x1: 90000,
+          y1: 0.057,
+        }),
+
+        Plot.line([[3400, 0.059], [14100, 0.052], [140000, 0.0485]], {
+          x0: 3400,
+          y0: 0.059,
+          x1: 18100,
+          y1: 0.051,
+          curve: "monotone-x"
+        }),
+        Plot.line([[140000, 0.0485,], [100000000, 0.0485,]], {
+          x1: 140000,
+          y1: 0.048,
+        }),
+
 
         Plot.text([5], {
           y: (d) => d,
@@ -179,83 +222,6 @@ export default function PressureDropLiquidChart() {
           y: (d) => d,
           x: [4650],
           text: ['4" SCH 80 (I.D = 3.826")'],
-          rotate: -64,
-          stroke: "var(--plot-background)",
-          fill: "currentColor",
-          fontWeight: "bold",
-          lineAnchor: "middle",
-          textAnchor: "start",
-        }),
-        Plot.text([0.6], {
-          y: (d) => d,
-          x: [13500],
-          text: ['6" SCH 80 (I.D = 6.065")'],
-          rotate: -64,
-          stroke: "var(--plot-background)",
-          fill: "currentColor",
-          fontWeight: "bold",
-          lineAnchor: "middle",
-          textAnchor: "start",
-        }),
-        Plot.text([0.6], {
-          y: (d) => d,
-          x: [28000],
-          text: ['8" SCH 40 (I.D = 7.981")'],
-          rotate: -64,
-          stroke: "var(--plot-background)",
-          fill: "currentColor",
-          fontWeight: "bold",
-          lineAnchor: "middle",
-          textAnchor: "start",
-        }),
-        Plot.text([0.2], {
-          y: (d) => d,
-          x: [28000],
-          text: ['10" SCH 40 (I.D = 10.02")'],
-          rotate: -64,
-          stroke: "var(--plot-background)",
-          fill: "currentColor",
-          fontWeight: "bold",
-          lineAnchor: "middle",
-          textAnchor: "start",
-        }),
-        Plot.text([0.2], {
-          y: (d) => d,
-          x: [45000],
-          text: ['12" SCH 40 (I.D = 11.938")'],
-          rotate: -64,
-          stroke: "var(--plot-background)",
-          fill: "currentColor",
-          fontWeight: "bold",
-          lineAnchor: "middle",
-          textAnchor: "start",
-        }),
-        Plot.text([0.15], {
-          y: (d) => d,
-          x: [52750],
-          text: ['14" SCH 30 (I.D = 13.25")'],
-          rotate: -65,
-          stroke: "var(--plot-background)",
-          fill: "currentColor",
-          fontWeight: "bold",
-          lineAnchor: "middle",
-          textAnchor: "start",
-        }),
-        Plot.text([0.101], {
-          y: (d) => d,
-          x: [60000],
-          text: ['16" SCH 30 (I.D = 15.250")'],
-          rotate: -64,
-          stroke: "var(--plot-background)",
-          fill: "currentColor",
-          fontWeight: "bold",
-          lineAnchor: "middle",
-          textAnchor: "start",
-        }),
-        Plot.text([0.110], {
-          y: (d) => d,
-          x: [85500],
-          text: ['18"'],
           rotate: -64,
           stroke: "var(--plot-background)",
           fill: "currentColor",
