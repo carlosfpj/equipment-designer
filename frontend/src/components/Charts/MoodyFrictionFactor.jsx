@@ -1,14 +1,14 @@
 import * as Plot from "@observablehq/plot";
 import * as d3 from "d3";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 export default function PressureDropLiquidChart() {
 
-  const SP_GR = 1;
-  const MOODY = 0.36;
-  const Y = (x, d) => (0.000115 * MOODY * (x ** 2) * SP_GR / (d ** 5));
-  const Yr = (y, d) => Math.sqrt((y * d ** 5) / (0.000115 * MOODY * SP_GR));
-  const x = (d) => Math.exp(Math.log(250) + 2 * Math.log(d));
+  // const SP_GR = 1;
+  // const MOODY = 0.36;
+  // const Y = (x, d) => (0.000115 * MOODY * (x ** 2) * SP_GR / (d ** 5));
+  // const Yr = (y, d) => Math.sqrt((y * d ** 5) / (0.000115 * MOODY * SP_GR));
+  // const x = (d) => Math.exp(Math.log(250) + 2 * Math.log(d));
 
   const containerRef = useRef();
 
@@ -289,109 +289,209 @@ export default function PressureDropLiquidChart() {
           curve: "natural"
         }),
 
-
-        Plot.text([5], {
+        Plot.text([0.075], {
           y: (d) => d,
-          x: [104],
-          text: ['3/4 SCH 160 (I.D = 0.614")'],
-          rotate: -62,
+          x: [8500000],
+          text: ['Relative Roughness E/D  .05'],
           stroke: "var(--plot-background)",
           fill: "currentColor",
           fontWeight: "bold",
-          lineAnchor: "middle",
-          textAnchor: "start",
-          dy: 18,
+          lineAnchor: "top",
+          textAnchor: "end",
+          dy: "-2",
+          dx: "10"
         }),
-        Plot.text([2], {
+        Plot.text([0.0673], {
           y: (d) => d,
-          x: [170],
-          text: ['1" SCH 80 (I.D = 0.957")'],
-          rotate: -63,
+          x: [8500000],
+          text: ['.04'],
           stroke: "var(--plot-background)",
           fill: "currentColor",
           fontWeight: "bold",
-          lineAnchor: "middle",
-          textAnchor: "start",
-          dy: 19,
+          lineAnchor: "top",
+          textAnchor: "end",
+          dy: "-2",
+          dx: "10"
         }),
-        Plot.text([2], {
+        Plot.text([0.059], {
           y: (d) => d,
-          x: [367],
-          text: ['1-1/4" SCH 80 (I.D = 1.278")'],
-          rotate: -63,
+          x: [8500000],
+          text: ['.03'],
           stroke: "var(--plot-background)",
           fill: "currentColor",
           fontWeight: "bold",
-          lineAnchor: "middle",
-          textAnchor: "start",
-          dy: 25,
+          lineAnchor: "top",
+          textAnchor: "end",
+          dy: "-2",
+          dx: "10"
         }),
-        Plot.text([2], {
+        Plot.text([0.0505], {
           y: (d) => d,
-          x: [560],
-          text: ['1-1/2" SCH 80 (I.D = 1.500")'],
-          rotate: -63,
+          x: [8500000],
+          text: ['.02'],
           stroke: "var(--plot-background)",
           fill: "currentColor",
           fontWeight: "bold",
-          lineAnchor: "middle",
-          textAnchor: "start",
-          dy: 25,
+          lineAnchor: "top",
+          textAnchor: "end",
+          dy: "-2",
+          dx: "10"
         }),
-        Plot.text([1.3], {
+        Plot.text([0.046], {
           y: (d) => d,
-          x: [900],
-          text: ['2" SCH 80 (I.D = 1.939")'],
-          rotate: -63,
+          x: [8500000],
+          text: ['.015'],
           stroke: "var(--plot-background)",
           fill: "currentColor",
           fontWeight: "bold",
-          lineAnchor: "middle",
-          textAnchor: "start",
+          lineAnchor: "top",
+          textAnchor: "end",
+          dy: "-2",
+          dx: "10"
         }),
-        Plot.text([1.3], {
+        Plot.text([0.0395], {
           y: (d) => d,
-          x: [1250],
-          text: ['2-1/2" SCH 160 (I.D = 2.125")'],
-          rotate: -63,
+          x: [8500000],
+          text: ['.01'],
           stroke: "var(--plot-background)",
           fill: "currentColor",
           fontWeight: "bold",
-          lineAnchor: "middle",
-          textAnchor: "start",
+          lineAnchor: "top",
+          textAnchor: "end",
+          dy: "-2",
+          dx: "10"
         }),
-        Plot.text([1.3], {
+        Plot.text([0.0364], {
           y: (d) => d,
-          x: [1600],
-          text: ['2-1/2" SCH 80 (I.D = 2.323")'],
-          rotate: -63,
+          x: [8500000],
+          text: ['.008'],
           stroke: "var(--plot-background)",
           fill: "currentColor",
           fontWeight: "bold",
-          lineAnchor: "middle",
-          textAnchor: "start",
+          lineAnchor: "top",
+          textAnchor: "end",
+          dy: "-2",
+          dx: "10"
         }),
-        Plot.text([1.0], {
+        Plot.text([0.033], {
           y: (d) => d,
-          x: [2530],
-          text: ['3" SCH 80 (I.D = 1.939")'],
-          rotate: -65,
+          x: [8500000],
+          text: ['.006'],
           stroke: "var(--plot-background)",
           fill: "currentColor",
           fontWeight: "bold",
-          lineAnchor: "middle",
-          textAnchor: "start",
+          lineAnchor: "top",
+          textAnchor: "end",
+          dy: "-2",
+          dx: "10"
         }),
-        Plot.text([1.0], {
+        Plot.text([0.0293], {
           y: (d) => d,
-          x: [4650],
-          text: ['4" SCH 80 (I.D = 3.826")'],
-          rotate: -64,
+          x: [8500000],
+          text: ['.004'],
           stroke: "var(--plot-background)",
           fill: "currentColor",
           fontWeight: "bold",
-          lineAnchor: "middle",
-          textAnchor: "start",
+          lineAnchor: "top",
+          textAnchor: "end",
+          dy: "-2",
+          dx: "10"
+        }),
+        Plot.text([0.0242], {
+          y: (d) => d,
+          x: [8500000],
+          text: ['.002'],
+          stroke: "var(--plot-background)",
+          fill: "currentColor",
+          fontWeight: "bold",
+          lineAnchor: "top",
+          textAnchor: "end",
+          dy: "-2",
+          dx: "10"
+        }),
+        Plot.text([0.0203], {
+          y: (d) => d,
+          x: [8500000],
+          text: ['.001'],
+          stroke: "var(--plot-background)",
+          fill: "currentColor",
+          fontWeight: "bold",
+          lineAnchor: "top",
+          textAnchor: "end",
+          dy: "-2",
+          dx: "10"
+        }),
+        Plot.text([0.01922], {
+          y: (d) => d,
+          x: [8500000],
+          text: ['.0008'],
+          stroke: "var(--plot-background)",
+          fill: "currentColor",
+          fontWeight: "bold",
+          lineAnchor: "top",
+          textAnchor: "end",
+          dy: "-2",
+          dx: "10"
+        }),
+        Plot.text([0.018], {
+          y: (d) => d,
+          x: [8500000],
+          text: ['.0006'],
+          stroke: "var(--plot-background)",
+          fill: "currentColor",
+          fontWeight: "bold",
+          lineAnchor: "top",
+          textAnchor: "end",
+          dy: "-2",
+          dx: "10"
+        }),
+        Plot.text([0.0165], {
+          y: (d) => d,
+          x: [8500000],
+          text: ['.0004'],
+          stroke: "var(--plot-background)",
+          fill: "currentColor",
+          fontWeight: "bold",
+          lineAnchor: "top",
+          textAnchor: "end",
+          dy: "-2",
+          dx: "10"
+        }),
+        Plot.text([0.0144], {
+          y: (d) => d,
+          x: [8500000],
+          text: ['.0002'],
+          stroke: "var(--plot-background)",
+          fill: "currentColor",
+          fontWeight: "bold",
+          lineAnchor: "top",
+          textAnchor: "end",
+          dy: "-2",
+          dx: "10"
+        }),
+        Plot.text([0.0124], {
+          y: (d) => d,
+          x: [8500000],
+          text: ['.0001'],
+          stroke: "var(--plot-background)",
+          fill: "currentColor",
+          fontWeight: "bold",
+          lineAnchor: "top",
+          textAnchor: "end",
+          dy: "-2",
+          dx: "10"
+        }),
+        Plot.text([0.0113], {
+          y: (d) => d,
+          x: [8500000],
+          text: ['E/D .00005'],
+          stroke: "var(--plot-background)",
+          fill: "currentColor",
+          fontWeight: "bold",
+          lineAnchor: "top",
+          textAnchor: "end",
+          dy: "-2",
+          dx: "10"
         }),
       ]
     });

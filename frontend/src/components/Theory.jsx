@@ -67,7 +67,6 @@ const Theory = () => {
         <span>" "</span> = centistokes times specific gravity divided by 1488<br />
       </p><br />
       <MoodyFrictionFactor/>
-      <img alt='Moody friction factor' src={fig3}></img><br />
     </div>
   )
 }
