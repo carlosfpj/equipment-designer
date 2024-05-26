@@ -339,20 +339,6 @@ export default function PressureDropLiquidChart() {
           lineAnchor: "middle",
           textAnchor: "start",
         }),
-
-        // Plot.text(values, {
-        //   text: (d) => d[1],
-        //   x: (d) => x(d[0]),
-        //   y: (d) => Y(x(d[0]), d[0]),
-        //   rotate: -63,
-        //   textAnchor: "start",
-        //   fontSize: "9",
-        //   fontWeight: "bold",
-        //   dx: 5,
-        //   dy: 5,
-        //   fill: "currentColor",
-        //   stroke: "var(--plot-background)"
-        // }),
       ]
     });
     containerRef.current.append(plot);

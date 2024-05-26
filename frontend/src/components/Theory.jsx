@@ -4,6 +4,7 @@ import fig3 from '../assets/images/3.png';
 import "./Theory.css";
 import VelocityLiquid from './Charts/VelocityLiquid';
 import PressureDropLiquidChart from './Charts/PressureDropLiquid';
+import MoodyFrictionFactor from './Charts/MoodyFrictionFactor';
 
 const Theory = () => {
 
@@ -46,7 +47,6 @@ const Theory = () => {
       </p><br />
 
       <PressureDropLiquidChart/>
-      <img alt='pressure drop in liquid lines' src={fig2}></img>
       <br />
 
       <p className="p">The Moody friction factor, f is a function of the Reynolds number and the surface roughness of
@@ -66,6 +66,7 @@ const Theory = () => {
         <span>" "</span> = centipoise divided by 1488, or <br />
         <span>" "</span> = centistokes times specific gravity divided by 1488<br />
       </p><br />
+      <MoodyFrictionFactor/>
       <img alt='Moody friction factor' src={fig3}></img><br />
     </div>
   )
