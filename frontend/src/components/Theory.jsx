@@ -1,6 +1,3 @@
-import fig1 from '../assets/images/1.png';
-import fig2 from '../assets/images/2.png';
-import fig3 from '../assets/images/3.png';
 import "./Theory.css";
 import VelocityLiquid from './Charts/VelocityLiquid';
 import PressureDropLiquidChart from './Charts/PressureDropLiquid';
