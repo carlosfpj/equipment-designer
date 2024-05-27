@@ -1,0 +1,33 @@
+//*/*/*/*/*/*/*/
+
+{/* <Row xs={1} md={2} xl={3} className='g-4'>
+          {lines.map(line => (
+            <Col key={line._id}>
+              <Line line={line} className={styles.line}></Line>
+            </Col>
+          ))}
+        </Row>
+        {
+          showAddLineDialog &&
+          <AddLineDialog
+            onDismiss={() => setShowAddLineDialog(false)}
+            onLineSaved={(newNote) => {
+              setLines([...lines, newNote])
+              setShowAddLineDialog(false);
+            }}
+          />
+        } */}
+
+//***/*/*/*/*/*/*/* */
+// useEffect(() => {
+//   async function loadNotes() {
+//     try {
+//       const lines = await LinesApi.fetchLines();
+//       setLines(lines);
+//     } catch (error) {
+//       console.error(error);
+//       alert(error);
+//     }
+//   }
+//   loadNotes();
+// }, []);
