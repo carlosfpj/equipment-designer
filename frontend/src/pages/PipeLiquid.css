@@ -40,6 +40,8 @@
 
 .form {
   max-width: 1020px;
+  margin: 2rem;
+  box-shadow: 0 -1.5rem #55B8FF;
 }
 
 input[type="radio"] {
@@ -51,19 +53,40 @@ input[type="radio"] {
   border: 1px solid black;
 }
 
+input[type="text"] {
+  background-color: #f3f6fc;
+  border-radius: 5px;
+  border: 1px solid gray;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border: 1px solid #55B8FF ;
+}
+
 input:checked {
   border: 5px solid black;
 }
 
 .input-group {
-  border: 1px solid gray;
+  display: flex;
+  flex-direction: column;
 }
 
 .radio-group {
-  margin-block-end: 0.5;
-  border: 1px solid gray;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-bottom: 1rem;
 }
 
 .radio-label {
   margin-inline-end: 1rem
+}
+
+.footer {
+  content: "";
+  height: 5rem;
+  width: 100%;
+  background-color: #f3f6fc;
 }
