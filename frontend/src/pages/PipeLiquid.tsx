@@ -127,8 +127,6 @@ const PipeLiquid = () => {
     }
   }
 
-
-
   return (
     <div className="maincontent">
       <div className="maincontent-header">
@@ -150,7 +148,6 @@ const PipeLiquid = () => {
         <Theory />
         {/* <Button onClick={() => setShowAddLineDialog(true)}>Add new Line Calculation</Button> */}
       </div>
-
       <div className="maincontent-form">
         <div className="form-intro">
           <p className='p'>If you want to calculate liquid pipes for the oil&gas industry
@@ -162,32 +159,37 @@ const PipeLiquid = () => {
           <form onSubmit={handleSubmit}>
             <div className="radio-group">
               <p>Choose the type of calculation you want to perform</p>
-              <input type='radio'
-                id='vel'
-                name='a'
-                value="vel"
-                checked={option === 0}
-                onChange={() => handleCalculateOption(0)}
-              />
-              <label className="radio-label" htmlFor="vel">Velocity</label>
+              <div className="radio-item">
+                <input type='radio'
+                  id='vel'
+                  name='a'
+                  value="vel"
+                  checked={option === 0}
+                  onChange={() => handleCalculateOption(0)}
+                />
+                <label className="radio-label" htmlFor="vel">Velocity</label>
+              </div>
+              <div className="radio-item">
+                <input type='radio'
+                  id='Pdrop'
+                  name='a'
+                  value="Pdrop"
+                  checked={option === 1}
+                  onChange={() => handleCalculateOption(1)}
+                />
+                <label className="radio-label" htmlFor="Pdrop">Pressure Drop</label>
+              </div>
 
-              <input type='radio'
-                id='Pdrop'
-                name='a'
-                value="Pdrop"
-                checked={option === 1}
-                onChange={() => handleCalculateOption(1)}
-              />
-              <label className="radio-label" htmlFor="Pdrop">Pressure Drop</label>
-
-              <input type='radio'
-                id='VP'
-                name='a'
-                value="VP"
-                checked={option === 2}
-                onChange={() => handleCalculateOption(2)}
-              />
-              <label className="radio-label" htmlFor="VP">Velocity and Pressure Drop</label>
+              <div className="radio-item">
+                <input type='radio'
+                  id='VP'
+                  name='a'
+                  value="VP"
+                  checked={option === 2}
+                  onChange={() => handleCalculateOption(2)}
+                />
+                <label className="radio-label" htmlFor="VP">Velocity and Pressure Drop</label>
+              </div>
             </div>
 
             <div className="input-group">
@@ -223,24 +225,25 @@ const PipeLiquid = () => {
                     <option value="20">20. Ordinary wood</option>
                   </select>
                   <br />
-                  <label>Liquid Specific Gravity [S]</label>
-                  <input type='text' onChange={handleSGChange} value={SG} /><br />
-                  <label>Liquid Density [lb/ft3]</label>
-                  <input type='text' onChange={handleDensityChange} value={liquidDensity} /><br />
-                  <label>Liquid Viscocity [Cp]</label>
-                  <input type='text' onChange={handleViscocityChange} value={liquidViscocity} /><br />
+                  <div className="input-group">
+                    <label>Liquid Specific Gravity [S]</label>
+                    <input type='text' onChange={handleSGChange} value={SG} /><br />
+                    <label>Liquid Density [lb/ft3]</label>
+                    <input type='text' onChange={handleDensityChange} value={liquidDensity} /><br />
+                    <label>Liquid Viscocity [Cp]</label>
+                    <input type='text' onChange={handleViscocityChange} value={liquidViscocity} /><br />
+                  </div>
                 </div>}
             </div>
-
             <button>submit</button>
           </form>
 
+          <span>Results</span>
           <p>velocity: {resultVelocity} ft/seg</p>
           <p>pressure Drop: {resultPressureDrop} psi/100feet</p>
           <p>PipeMaterial: {pipeMaterialID}</p>
         </div>
       </div>
-
     </div>
   )
 }
