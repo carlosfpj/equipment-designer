@@ -238,10 +238,17 @@ const PipeLiquid = () => {
               <button>submit</button>
             </form>
 
-            <span>Results</span>
-            <p>velocity: {resultVelocity} ft/seg</p>
-            <p>pressure Drop: {resultPressureDrop} psi/100feet</p>
-            <p>PipeMaterial: {pipeMaterialID}</p>
+            <div className="form-results">
+              <span>Results</span>
+              <hr></hr>
+              <p><strong>Velocity:</strong> <label>{resultVelocity}</label> ft/seg</p>
+              {showOption &&
+                <>
+                  <p><strong>Pressure Drop:</strong> <label>{resultPressureDrop}</label> psi/100feet</p>
+                  <p><strong>PipeMaterial:</strong> <label>{pipeMaterialID}</label></p>
+                </>
+              }
+            </div>
           </div>
         </div>
         <footer className="footer">
