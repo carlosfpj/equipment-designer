@@ -44,6 +44,14 @@
   box-shadow: 0 -1.5rem #55B8FF;
 }
 
+.form button {
+  background-color: #55B8FF;
+  color: black;
+  outline: none;
+  border: none;
+  border: 2px solid gray;
+}
+
 .form-results {
   margin-block-start: 1rem;
   border: 1px solid #55B8FF;

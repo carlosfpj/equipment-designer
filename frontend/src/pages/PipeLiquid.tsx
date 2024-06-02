@@ -235,7 +235,7 @@ const PipeLiquid = () => {
                     </div>
                   </div>}
               </div>
-              <button>submit</button>
+              <button>Calculate</button>
             </form>
 
             <div className="form-results">
